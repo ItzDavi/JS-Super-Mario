@@ -10,7 +10,6 @@ function Player(x, y, borders) {
     this.maxSpeed = 10;
     //Player ready to move
     this.active = true;
-    this.onGround = false;
     this.facing = 0;
     this.previousFacing = 0;
     this.width = 50;
@@ -28,6 +27,7 @@ function Player(x, y, borders) {
           } else if(this.previousFacing == 2){
             this.facing = 3;
           }
+
           //If moving both ways
           this.xspeed *= this.friction;
         } else if (rightKey) {
@@ -43,10 +43,9 @@ function Player(x, y, borders) {
         }
 
         //Vertical Movement
-        if (upKey && this.onGround) {
+        if (upKey) {
           //Check if on ground
           this.yspeed -= 15;
-          this.onGround = false;
         }
         //Gravity
         this.yspeed += 5;
@@ -115,6 +114,23 @@ function Player(x, y, borders) {
           if (checkIntersection(verticalRect, borderRect)) {
             while (checkIntersection(verticalRect, borderRect)) {
               verticalRect.y -= Math.sign(this.yspeed);
+            }
+            this.y = verticalRect.y;
+            this.yspeed = 0;
+          }
+
+          //Border limits
+          if (checkBorderIntersectionR1(horizontalRect, canvasBorderRect)) {
+            while (checkBorderIntersectionR1(horizontalRect, canvasBorderRect)) {
+              horizontalRect.x -= Math.sign(this.xspeed);
+            }
+            this.x = horizontalRect.x;
+            this.xspeed = 0;
+          }
+
+          if (checkBorderIntersectionR2(verticalRect, canvasBorderRect)) {
+            while (checkBorderIntersectionR2(verticalRect, canvasBorderRect)) {
+              horizontalRect.x -= Math.sign(this.xspeed);
             }
             this.y = verticalRect.y;
             this.yspeed = 0;

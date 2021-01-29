@@ -3,7 +3,9 @@ var canvas;
 var ctx;
 var canvasBackground = new Image();
 var canvasScrollingWidth = 1280;
+var canvasBorderRect = {x: 0, y:0, width: 1280, height:720};
 var grassBackground = new Image();
+var pipe = new Image();
 
 //Input variables
 var upKey;
@@ -32,7 +34,7 @@ window.onload = function () {
   }
 
   for(let i = 0; i < 3; i++) {
-    all_borders.newBorder(600,420 + 100 * i, 100, 100, 2);
+    all_borders.newBorder(600, 420+100, 100, 100, 2);
   }
 
   //Create Player
@@ -112,3 +114,32 @@ function checkIntersection (r1, r2) {
     return true;
   }
 }
+
+//Check for intersections between player and canvas Borders
+function checkBorderIntersectionR1 (r1, r2) {
+  if (r1.x > r2.x + r2.width) {
+    return false;
+  } else if (r1.x + r1.width <= r2.x) {
+    return false;
+  } else if (r1.y >= r2.y + r2.height) {
+    return false;
+  } else if (r1.y + r1.height <= r2.y) {
+    return false;
+  } else {
+    return true;
+  }
+}
+  //Second part
+  function checkBorderIntersectionR2 (r1, r2) {
+    if (r1.x > r2.x + r2.width) {
+      return false;
+    } else if (r1.x + r1.width <= r2.x) {
+      return false;
+    } else if (r1.y >= r2.y + r2.height) {
+      return false;
+    } else if (r1.y + r1.height <= r2.y) {
+      return false;
+    } else {
+      return true;
+    }
+  }

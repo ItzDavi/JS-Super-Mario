@@ -14,8 +14,8 @@ class Border {
       grassBackground.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/grass.jpg";
       ctx.drawImage(grassBackground, this.x, this.y, 1280, 100);
     } else if (this.type === 2) {
-      ctx.fillStyle = "red";
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+      pipe.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/pipe.png"
+      ctx.drawImage(pipe, this.x, this.y, this.width, this.height);
     }
   }
 }
