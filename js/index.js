@@ -72,12 +72,13 @@ function step() {
     }, maxJumpTime);
   }
   //Set ground y
-  if(player.x >= 551 && player.x <= 700) {
+  if(player.x >= 551 && player.x < 700) {
     startingY = 420;
   } else {
     startingY = 520;
   }
 
+  //Show text when on signs for better ux
   if(player.x >= 1100 && currentLevel + 1 < paragraphs.length) {
     ctx.fillText("Premi invio per andare", 1140, 450, 120);
     ctx.fillText("al livello sucessivo", 1150, 470, 100);
@@ -85,6 +86,15 @@ function step() {
     ctx.fillText("Premi invio per andare", 30, 450, 120);
     ctx.fillText("al livello precedente", 40, 470, 100);
   }
+
+  //Show text when on pipe
+  if(player.x >= 551 && player.x < 700) { 
+    ctx.textAlign = "center";
+    ctx.fillText(paragraphs[currentLevel], (canvas.width / 2) , 100);
+  } else {
+    ctx.textAlign = "start";
+  }
+
 
 }
 

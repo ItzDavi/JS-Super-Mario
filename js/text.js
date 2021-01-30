@@ -1,6 +1,6 @@
 // i testi delle frasi da mostrare nei vari "livelli"
 var paragraphs = [
-    "",
+    "La crisi del 29 è iniziata con blah blah blah ...",
     "",
     "",
     ""
