@@ -14,7 +14,7 @@ class Border {
       grassBackground.src = "../assets/grass.jpg";
       ctx.drawImage(grassBackground, this.x, this.y, 1280, 100);
     } else if (this.type === 2) {
-      pipe.src = "../assets/pipe.jpg"
+      pipe.src = "../assets/pipe.png"
       ctx.drawImage(pipe, this.x, this.y, this.width, this.height);
     //} //else if (this.type === 3) {
       //invisibleBorders.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/invisibleBorders.png"

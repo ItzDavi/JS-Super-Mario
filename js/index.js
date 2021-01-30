@@ -85,7 +85,7 @@ function draw() {
   //Draw signs
   signNext.src = "../assets/sign.png";
   signPrev.src = "../assets/signrev.png";
-  if(currentLevel + 1 <= paragraphs.length)
+  if(currentLevel + 1 < paragraphs.length)
     ctx.drawImage(signNext, 1150, 530, 100, 100);
   if(currentLevel != 0) 
     ctx.drawImage(signPrev, 30, 530, 100, 100);
@@ -193,7 +193,7 @@ function turnJumpOff() {
 }
 
 function changeLevel(player, direction) {
-  if(direction === "next" && currentLevel + 1 <= paragraphs.length){ 
+  if(direction === "next" && currentLevel + 1 < paragraphs.length){ 
     currentLevel += 1;
     player.x = 300;
   } else if(direction === "prev" && currentLevel > 0) {
