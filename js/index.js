@@ -47,7 +47,7 @@ window.onload = function () {
 function step() {
   //Player step
   player.step();
-
+  checkBordersCollisions(player);
   //Draw everything
   draw();
 }
@@ -114,6 +114,19 @@ function checkIntersection (r1, r2) {
     return true;
   }
 }
+
+ function checkBordersCollisions (player) {
+   if (player.x < 0) {
+     player.xspeed = 0;
+     player.x = 0
+   } else if (player.x >= 1230) {
+     player.xspeed = 0;
+     player.x = 1230;
+   } else if (player.y < 0) {
+     player.yspeed = 0;
+     player.y = 0;
+   }
+ }
 
 //Check for intersections between player and canvas Borders
 /*function checkBorderIntersectionR1 (r1, r2) {
