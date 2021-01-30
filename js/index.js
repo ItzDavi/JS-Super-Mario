@@ -5,6 +5,8 @@ var canvasBackground = new Image();
 var canvasScrollingWidth = 1280;
 var grassBackground = new Image();
 var pipe = new Image();
+var signNext = new Image();
+var signPrev = new Image();
 var invisibleBorders = new Image();
 
 //Input variables
@@ -20,6 +22,9 @@ var all_borders;
 var isJumpPossible;
 var maxJumpTime = 200; //in milliseconds
 var startingY;
+
+//Levels variables
+var currentLevel = 0;
 
 //Run once page has loaded
 window.onload = function () {
@@ -41,7 +46,7 @@ window.onload = function () {
   }
 
   //Create Player
-  player = new Player(100,400, all_borders);
+  player = new Player(300,400, all_borders);
 
   //Game loop
   gameLoop = setInterval(step, 1000/60);
@@ -64,25 +69,27 @@ function step() {
       upKey = false;
     }, maxJumpTime);
   }
-  //Set y if player on pipe
+  //Set ground y
   if(player.x >= 551 && player.x <= 700) {
     startingY = 420;
   } else {
     startingY = 520;
   }
+
 }
 
 function draw() {
-  //Clear canvas
-  //ctx.fillStyle = "white";
-  //ctx.fillRect(0,0,1280,720);
   canvasBackground.src = "../assets/cloudsFixed.jpg";
   ctx.drawImage(canvasBackground, 0, 0);
-  /*ctx.drawImage(canvasBackground, 0 + canvasScrollingWidth, 0);
-  canvasScrollingWidth += 5;
-  if (canvasScrollingWidth == canvas.width) {
-    canvasScrollingWidth = 0;
-  }*/
+
+  //Draw signs
+  signNext.src = "../assets/sign.png";
+  signPrev.src = "../assets/signrev.png";
+  if(currentLevel + 1 <= paragraphs.length)
+    ctx.drawImage(signNext, 1150, 530, 100, 100);
+  if(currentLevel != 0) 
+    ctx.drawImage(signPrev, 30, 530, 100, 100);
+  
 
   //Draw Player
   player.draw();
@@ -106,7 +113,8 @@ function setupInputs() {
       downKey = true;
     } else if (event.key === "d" || event.key === "ArrowRight") {
       rightKey = true;
-  }});
+    } 
+  });
 
   document.addEventListener("keyup", function(event){
     if (event.key === "w" || event.key === "ArrowUp") {
@@ -118,6 +126,17 @@ function setupInputs() {
     } else if (event.key === "d" || event.key === "ArrowRight") {
       rightKey = false;
   }});
+
+  document.addEventListener("keypress", function(event) {
+    if (event.keyCode === 13) { //enter key
+      if(player.x >= 1100) {
+        changeLevel(player, "next");
+      } else if(player.x <= 150) {
+        changeLevel(player, "prev");
+      }
+    }
+  });
+
 }
 
 //Check for intersections between objects
@@ -171,4 +190,16 @@ function turnJumpOff() {
     });
     return promise;
   }
+}
+
+function changeLevel(player, direction) {
+  if(direction === "next" && currentLevel + 1 <= paragraphs.length){ 
+    currentLevel += 1;
+    player.x = 300;
+  } else if(direction === "prev" && currentLevel > 0) {
+    currentLevel -= 1;
+    player.x = 300;
+  }
+  document.getElementsByTagName("h2")[0].textContent = subtitles[currentLevel];
+  console.log(currentLevel);
 }
