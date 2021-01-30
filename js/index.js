@@ -31,6 +31,8 @@ window.onload = function () {
   //Assign canvas and ctx variables
   canvas = document.getElementById("game-canvas");
   ctx = canvas.getContext("2d");
+  ctx.fillStyle = "black";
+  ctx.font = "bold 16px Arial";
 
   //Setup key listeners
   setupInputs();
@@ -74,6 +76,14 @@ function step() {
     startingY = 420;
   } else {
     startingY = 520;
+  }
+
+  if(player.x >= 1100 && currentLevel + 1 < paragraphs.length) {
+    ctx.fillText("Premi invio per andare", 1140, 450, 120);
+    ctx.fillText("al livello sucessivo", 1150, 470, 100);
+  } else if(player.x <= 150 && currentLevel > 0) {
+    ctx.fillText("Premi invio per andare", 30, 450, 120);
+    ctx.fillText("al livello precedente", 40, 470, 100);
   }
 
 }
