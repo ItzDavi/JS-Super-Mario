@@ -88,7 +88,7 @@ function step() {
   }
 
   //Show text when on pipe
-  if(player.x >= 551 && player.x < 700) { 
+  if(player.x >= 551 && player.x < 700) {
     ctx.textAlign = "center";
     ctx.fillText(paragraphs[currentLevel], (canvas.width / 2) , 100);
   } else {
@@ -99,17 +99,17 @@ function step() {
 }
 
 function draw() {
-  canvasBackground.src = "../assets/cloudsFixed.jpg";
+  canvasBackground.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/cloudsFixed.jpg";
   ctx.drawImage(canvasBackground, 0, 0);
 
   //Draw signs
-  signNext.src = "../assets/sign.png";
-  signPrev.src = "../assets/signrev.png";
+  signNext.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/sign.png";
+  signPrev.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/signrev.png";
   if(currentLevel + 1 < paragraphs.length)
     ctx.drawImage(signNext, 1150, 530, 100, 100);
-  if(currentLevel != 0) 
+  if(currentLevel != 0)
     ctx.drawImage(signPrev, 30, 530, 100, 100);
-  
+
 
   //Draw Player
   player.draw();
@@ -133,7 +133,7 @@ function setupInputs() {
       downKey = true;
     } else if (event.key === "d" || event.key === "ArrowRight") {
       rightKey = true;
-    } 
+    }
   });
 
   document.addEventListener("keyup", function(event){
@@ -177,10 +177,10 @@ function checkIntersection (r1, r2) {
  function checkBordersCollisions(player) {
    if (player.x < 0) {
      player.xspeed = 0;
-     player.x = 0
-   } else if (player.x >= 1230) {
+     player.x = 0;
+   } else if (player.x >= 1280 - player.width) {
      player.xspeed = 0;
-     player.x = 1230;
+     player.x = 1280 - player.width;
    } else if (player.y < 0) {
      player.yspeed = 0;
      player.y = 0;
@@ -213,7 +213,7 @@ function turnJumpOff() {
 }
 
 function changeLevel(player, direction) {
-  if(direction === "next" && currentLevel + 1 < paragraphs.length){ 
+  if(direction === "next" && currentLevel + 1 < paragraphs.length){
     currentLevel += 1;
     player.x = 300;
   } else if(direction === "prev" && currentLevel > 0) {
