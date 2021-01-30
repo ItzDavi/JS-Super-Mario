@@ -120,7 +120,7 @@ function Player(x, y, borders) {
           }
 
           //Border limits
-          if (checkBorderIntersectionR1(horizontalRect, canvasBorderRect)) {
+          /*if (checkBorderIntersectionR1(horizontalRect, canvasBorderRect)) {
             while (checkBorderIntersectionR1(horizontalRect, canvasBorderRect)) {
               horizontalRect.x -= Math.sign(this.xspeed);
             }
@@ -134,7 +134,7 @@ function Player(x, y, borders) {
             }
             this.y = verticalRect.y;
             this.yspeed = 0;
-          }
+          }*/
 
           }
 

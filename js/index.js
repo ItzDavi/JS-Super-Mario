@@ -3,9 +3,9 @@ var canvas;
 var ctx;
 var canvasBackground = new Image();
 var canvasScrollingWidth = 1280;
-var canvasBorderRect = {x: 0, y:0, width: 1280, height:720};
 var grassBackground = new Image();
 var pipe = new Image();
+var invisibleBorders = new Image();
 
 //Input variables
 var upKey;
@@ -116,7 +116,7 @@ function checkIntersection (r1, r2) {
 }
 
 //Check for intersections between player and canvas Borders
-function checkBorderIntersectionR1 (r1, r2) {
+/*function checkBorderIntersectionR1 (r1, r2) {
   if (r1.x > r2.x + r2.width) {
     return false;
   } else if (r1.x + r1.width <= r2.x) {
@@ -141,5 +141,4 @@ function checkBorderIntersectionR1 (r1, r2) {
       return false;
     } else {
       return true;
-    }
-  }
+    }*/

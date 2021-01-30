@@ -16,6 +16,9 @@ class Border {
     } else if (this.type === 2) {
       pipe.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/pipe.png"
       ctx.drawImage(pipe, this.x, this.y, this.width, this.height);
+    //} //else if (this.type === 3) {
+      //invisibleBorders.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/invisibleBorders.png"
+      //ctx.drawImage(invisibleBorders, this.x, this.y, 1280, 100);
     }
   }
 }
