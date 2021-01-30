@@ -8,6 +8,7 @@ var pipe = new Image();
 var signNext = new Image();
 var signPrev = new Image();
 var invisibleBorders = new Image();
+var wall = new Image();
 
 //Input variables
 var upKey;
@@ -57,13 +58,17 @@ window.onload = function () {
 function step() {
   //Player step
   player.step();
+
   checkBordersCollisions(player);
+
   //Draw everything
   draw();
+
   //Check if player is on ground
   checkPos(player).then((check) => {
     isJumpPossible = check;
   });
+
   //Only allow jump for x seconds
   if(isJumpPossible && upKey) {
     setTimeout(() => {
@@ -71,34 +76,17 @@ function step() {
       upKey = false;
     }, maxJumpTime);
   }
+
   //Set ground y
   if(player.x >= 551 && player.x < 700) {
     startingY = 420;
   } else {
     startingY = 520;
   }
-
-  //Show text when on signs for better ux
-  if(player.x >= 1100 && currentLevel + 1 < paragraphs.length) {
-    ctx.fillText("Premi invio per andare", 1140, 450, 120);
-    ctx.fillText("al livello sucessivo", 1150, 470, 100);
-  } else if(player.x <= 150 && currentLevel > 0) {
-    ctx.fillText("Premi invio per andare", 30, 450, 120);
-    ctx.fillText("al livello precedente", 40, 470, 100);
-  }
-
-  //Show text when on pipe
-  if(player.x >= 551 && player.x < 700) {
-    ctx.textAlign = "center";
-    ctx.fillText(paragraphs[currentLevel], (canvas.width / 2) , 100);
-  } else {
-    ctx.textAlign = "start";
-  }
-
-
 }
 
 function draw() {
+  //Draw canvas background
   canvasBackground.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/cloudsFixed.jpg";
   ctx.drawImage(canvasBackground, 0, 0);
 
@@ -110,20 +98,37 @@ function draw() {
   if(currentLevel != 0)
     ctx.drawImage(signPrev, 30, 530, 100, 100);
 
-
   //Draw Player
   player.draw();
 
   //Draw borders
   all_borders.allBorders.forEach(border => border.draw());
 
-  //Camera movements
-  ctx.save();
-  ctx.translate(canvas.width/2-player.x, canvas.height/2-player.y);
-  ctx.restore();
+  //Show text when on signs for better ux
+  if(player.x >= 1100 && currentLevel + 1 < paragraphs.length) {
+    ctx.fillText("Premi invio per andare", 1140, 450, 120);
+    ctx.fillText("al livello sucessivo", 1150, 470, 100);
+  } else if(player.x <= 150 && currentLevel > 0) {
+    ctx.fillText("Premi invio per andare", 30, 450, 120);
+    ctx.fillText("al livello precedente", 40, 470, 100);
+  }
+
+  //Show text when on pipe
+  wall.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/wall.jpg";
+  if(player.x >= 551 && player.x < 700) {
+    ctx.textAlign = "center";
+    ctx.drawImage(wall, canvas.width / 5, 50, 750, 350);
+    ctx.font = "normal normal bold 14px";
+    ctx.fillStyle = "white";
+    splitTexts(ctx, paragraphs, canvas.width / 2, 100, maxWidth, lineHeight);
+    //ctx.fillText(paragraphs[currentLevel], (canvas.width / 2) , 100);
+  } else {
+    ctx.textAlign = "start";
+  }
 }
 
 function setupInputs() {
+  //Listener for when a key is pressed
   document.addEventListener("keydown", function(event){
     if ((event.key === "w" || event.key === "ArrowUp") && isJumpPossible) {
         upKey = true;
@@ -136,6 +141,7 @@ function setupInputs() {
     }
   });
 
+  //Listener for when a key is no more pressed
   document.addEventListener("keyup", function(event){
     if (event.key === "w" || event.key === "ArrowUp") {
       upKey = false;
@@ -146,7 +152,7 @@ function setupInputs() {
     } else if (event.key === "d" || event.key === "ArrowRight") {
       rightKey = false;
   }});
-
+  //Listener for the ENTER key
   document.addEventListener("keypress", function(event) {
     if (event.keyCode === 13) { //enter key
       if(player.x >= 1100) {
@@ -174,6 +180,7 @@ function checkIntersection (r1, r2) {
   }
 }
 
+//Check for borders and players collisions
  function checkBordersCollisions(player) {
    if (player.x < 0) {
      player.xspeed = 0;
@@ -187,6 +194,7 @@ function checkIntersection (r1, r2) {
    }
  }
 
+//Check the player position to let him jump
 function checkPos(player) {
   var check = false;
   let promise = new Promise(function(resolve, reject) {
@@ -199,6 +207,7 @@ function checkPos(player) {
   return promise;
 }
 
+//Impossibilities the player to jump
 function turnJumpOff() {
   if(isJumpPossible) {
     var check = false;
@@ -212,6 +221,7 @@ function turnJumpOff() {
   }
 }
 
+//Change level
 function changeLevel(player, direction) {
   if(direction === "next" && currentLevel + 1 < paragraphs.length){
     currentLevel += 1;
