@@ -146,19 +146,19 @@ function Player(x, y, borders) {
   this.draw = function() {
     if (this.facing === 0) {
       let marioSkin = new Image();
-      marioSkin.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/mario1.jpg";
+      marioSkin.src = "../assets/mario1.jpg";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     } else if (this.facing === 1) {
       let marioSkin = new Image();
-      marioSkin.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/mario2.jpg";
+      marioSkin.src = "./assets/mario2.jpg";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     } else if (this.facing === 2) {
       let marioSkin = new Image();
-      marioSkin.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/mario2rev.jpg";
+      marioSkin.src = "./assets/mario2rev.jpg";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     } else if (this.facing === 3) {
       let marioSkin = new Image();
-      marioSkin.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/mario1rev.jpg";
+      marioSkin.src = "./assets/mario1rev.jpg";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     }
   }

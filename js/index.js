@@ -17,6 +17,9 @@ var leftKey;
 var gameLoop;
 var player;
 var all_borders;
+var isJumpPossible;
+var maxJumpTime = 200; //in milliseconds
+var startingY;
 
 //Run once page has loaded
 window.onload = function () {
@@ -50,13 +53,30 @@ function step() {
   checkBordersCollisions(player);
   //Draw everything
   draw();
+  //Check if player is on ground
+  checkPos(player).then((check) => {
+    isJumpPossible = check;
+  });
+  //Only allow jump for x seconds
+  if(isJumpPossible && upKey) {
+    setTimeout(() => {
+      isJumpPossible = false;
+      upKey = false;
+    }, maxJumpTime);
+  }
+  //Set y if player on pipe
+  if(player.x >= 551 && player.x <= 700) {
+    startingY = 420;
+  } else {
+    startingY = 520;
+  }
 }
 
 function draw() {
   //Clear canvas
   //ctx.fillStyle = "white";
   //ctx.fillRect(0,0,1280,720);
-  canvasBackground.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/cloudsFixed.jpg";
+  canvasBackground.src = "../assets/cloudsFixed.jpg";
   ctx.drawImage(canvasBackground, 0, 0);
   /*ctx.drawImage(canvasBackground, 0 + canvasScrollingWidth, 0);
   canvasScrollingWidth += 5;
@@ -78,8 +98,8 @@ function draw() {
 
 function setupInputs() {
   document.addEventListener("keydown", function(event){
-    if (event.key === "w" || event.key === "ArrowUp") {
-      upKey = true;
+    if ((event.key === "w" || event.key === "ArrowUp") && isJumpPossible) {
+        upKey = true;
     } else if (event.key === "a" || event.key === "ArrowLeft") {
       leftKey = true;
     } else if (event.key === "s" || event.key === "ArrowDown") {
@@ -115,7 +135,7 @@ function checkIntersection (r1, r2) {
   }
 }
 
- function checkBordersCollisions (player) {
+ function checkBordersCollisions(player) {
    if (player.x < 0) {
      player.xspeed = 0;
      player.x = 0
@@ -128,30 +148,27 @@ function checkIntersection (r1, r2) {
    }
  }
 
-//Check for intersections between player and canvas Borders
-/*function checkBorderIntersectionR1 (r1, r2) {
-  if (r1.x > r2.x + r2.width) {
-    return false;
-  } else if (r1.x + r1.width <= r2.x) {
-    return false;
-  } else if (r1.y >= r2.y + r2.height) {
-    return false;
-  } else if (r1.y + r1.height <= r2.y) {
-    return false;
-  } else {
-    return true;
+function checkPos(player) {
+  var check = false;
+  let promise = new Promise(function(resolve, reject) {
+    setTimeout(() => {
+      if((player.y == startingY && player.y == 520) || (player.y == startingY && player.y == 420))
+        check = true;
+      resolve(check);
+    }, 1000);
+  });
+  return promise;
+}
+
+function turnJumpOff() {
+  if(isJumpPossible) {
+    var check = false;
+    let promise = new Promise(function(resolve, reject) {
+      setTimeout(() => {
+        check = false;
+        resolve(check);
+      }, 1000);
+    });
+    return promise;
   }
 }
-  //Second part
-  function checkBorderIntersectionR2 (r1, r2) {
-    if (r1.x > r2.x + r2.width) {
-      return false;
-    } else if (r1.x + r1.width <= r2.x) {
-      return false;
-    } else if (r1.y >= r2.y + r2.height) {
-      return false;
-    } else if (r1.y + r1.height <= r2.y) {
-      return false;
-    } else {
-      return true;
-    }*/

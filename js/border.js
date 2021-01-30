@@ -11,10 +11,10 @@ class Border {
     if (this.type === 1) {
       //ctx.fillStyle = "blue";
       //ctx.fillRect(this.x, this.y, this.width, this.height);
-      grassBackground.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/grass.jpg";
+      grassBackground.src = "../assets/grass.jpg";
       ctx.drawImage(grassBackground, this.x, this.y, 1280, 100);
     } else if (this.type === 2) {
-      pipe.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/pipe.png"
+      pipe.src = "../assets/pipe.jpg"
       ctx.drawImage(pipe, this.x, this.y, this.width, this.height);
     //} //else if (this.type === 3) {
       //invisibleBorders.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/invisibleBorders.png"
@@ -31,7 +31,6 @@ class Borders {
   newBorder(x, y, width, height, type) {
     let b = new Border(x, y, width, height, type);
     this.borders.push(b);
-    console.log(this.borders);
     return b;
   }
 
