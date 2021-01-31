@@ -33,14 +33,14 @@ wallace1.src = "../assets/wallace.jpeg"
 var wallace2 = new Image();
 wallace2.src = "../assets/wallace2.jpg"
 var flappers = new Image();
-flappers.src = "../assets/flappers.png"
+flappers.src = "../assets/flappers.jpg"
 var flappers2 = new Image();
 flappers2.src = "../assets/flappers2.jpg"
 var alCapone = new Image();
 alCapone.src = "../assets/alcapone.png"
 var ticker = new Image();
 ticker.src = "../assets/ticker.png"
-var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers, flappers2];
+var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers2, flappers];
 
 
 //Run once page has loaded
@@ -133,7 +133,7 @@ function draw() {
   wall.src = "../assets/journal.png";
   if(player.x >= 551 && player.x < 700) {
     ctx.textAlign = "";
-    ctx.drawImage(wall, 30, 30, 780, 380);
+    ctx.drawImage(wall, 30, 30, 750, 380);
     ctx.font = "normal normal bold 14px";
     ctx.fillStyle = "white";
     splitTexts(ctx, paragraphs, 70, 70, maxWidth, lineHeight);

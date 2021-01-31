@@ -12,7 +12,7 @@ function Player(x, y, borders) {
     this.active = true;
     this.facing = 0;
     this.previousFacing = 0;
-    this.width = 75;
+    this.width = 50;
     this.height = 100;
 
     this.step = function() {
