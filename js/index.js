@@ -87,16 +87,16 @@ function step() {
 
 function draw() {
   //Draw canvas background
-  canvasBackground.src = "../assets/cloudsFixed.jpg";
-  ctx.drawImage(canvasBackground, 0, 0);
+  canvasBackground.src = "../assets/bg1.jpg";
+  ctx.drawImage(canvasBackground, 0, 0, 1280, 720);
 
   //Draw signs
-  signNext.src = "../assets/sign.png";
-  signPrev.src = "../assets/signrev.png";
+  signNext.src = "../assets/signwhite.png";
+  signPrev.src = "../assets/signrevwhite.png";
   if(currentLevel + 1 < paragraphs.length)
-    ctx.drawImage(signNext, 1150, 530, 100, 100);
+    ctx.drawImage(signNext, 1100, 490, 150, 150);
   if(currentLevel != 0)
-    ctx.drawImage(signPrev, 30, 530, 100, 100);
+    ctx.drawImage(signPrev, 30, 490, 150, 150);
 
   //Draw Player
   player.draw();
@@ -106,11 +106,11 @@ function draw() {
 
   //Show text when on signs for better ux
   if(player.x >= 1100 && currentLevel + 1 < paragraphs.length) {
-    ctx.fillText("Premi invio per andare", 1140, 450, 120);
-    ctx.fillText("al livello sucessivo", 1150, 470, 100);
+    ctx.fillText("Premi invio per andare", 1100, 450, 120);
+    ctx.fillText("al livello sucessivo", 1110, 470, 100);
   } else if(player.x <= 150 && currentLevel > 0) {
-    ctx.fillText("Premi invio per andare", 30, 450, 120);
-    ctx.fillText("al livello precedente", 40, 470, 100);
+    ctx.fillText("Premi invio per andare", 50, 450, 120);
+    ctx.fillText("al livello precedente", 60, 470, 100);
   }
 
   //Show text when on pipe

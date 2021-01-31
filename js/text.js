@@ -14,7 +14,7 @@ var y = 60;
 //Paragraphs to write
 // i testi delle frasi da mostrare nei vari "livelli"
 var paragraphs = [
-    "La crisi del 29 è iniziata con blah blah blah blah blah blahblah blah blahblah blah blahblah blah blahblah blah blahblah blah blahblah blah blahblah blah blahblah blah blah",
+    "La \“Crisi del '29\” anche chiamata \“Grande depressione\” fu la crisi economica che alla fine degli anni Venti colpì l’economia mondiale riducendo su scala globale produzione, occupazione, redditi, salari, consumi e risparmi. L’inizio della grande depressione coincide con il pesante crollo che si abbatté sulla Borsa di Wall Street",
     "livello 1",
     "livello 2",
     "I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da "

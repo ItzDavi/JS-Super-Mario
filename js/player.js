@@ -12,7 +12,7 @@ function Player(x, y, borders) {
     this.active = true;
     this.facing = 0;
     this.previousFacing = 0;
-    this.width = 50;
+    this.width = 75;
     this.height = 100;
 
     this.step = function() {
@@ -129,19 +129,19 @@ function Player(x, y, borders) {
   this.draw = function() {
     if (this.facing === 0) {
       let marioSkin = new Image();
-      marioSkin.src = "../assets/mario1.jpg";
+      marioSkin.src = "../assets/rightstill.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     } else if (this.facing === 1) {
       let marioSkin = new Image();
-      marioSkin.src = "./assets/mario2.jpg";
+      marioSkin.src = "./assets/rightmov.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     } else if (this.facing === 2) {
       let marioSkin = new Image();
-      marioSkin.src = "./assets/mario2rev.jpg";
+      marioSkin.src = "./assets/leftmov.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     } else if (this.facing === 3) {
       let marioSkin = new Image();
-      marioSkin.src = "./assets/mario1rev.jpg";
+      marioSkin.src = "./assets/leftstill.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     }
   }

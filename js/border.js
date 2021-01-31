@@ -11,10 +11,10 @@ class Border {
     if (this.type === 1) {
       //ctx.fillStyle = "blue";
       //ctx.fillRect(this.x, this.y, this.width, this.height);
-      grassBackground.src = "../assets/grass.jpg";
+      grassBackground.src = "../assets/ground.jpg";
       ctx.drawImage(grassBackground, this.x, this.y, 1280, 100);
     } else if (this.type === 2) {
-      pipe.src = "../assets/pipe.png"
+      pipe.src = "../assets/camino.png"
       ctx.drawImage(pipe, this.x, this.y, this.width, this.height);
     //} //else if (this.type === 3) {
       //invisibleBorders.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/invisibleBorders.png"
