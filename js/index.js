@@ -108,7 +108,7 @@ function step() {
 
 function draw() {
   //Draw canvas background
-  canvasBackground.src = "../assets/bg1.jpg";
+  canvasBackground.src = "../assets/bg2.jpg";
   ctx.drawImage(canvasBackground, 0, 0, 1280, 720);
 
   //Draw signs
