@@ -27,6 +27,22 @@ var startingY;
 //Levels variables
 var currentLevel = 0;
 
+//Images
+var wallace1 = new Image();
+wallace1.src = "../assets/wallace.jpeg"
+var wallace2 = new Image();
+wallace2.src = "../assets/wallace2.jpg"
+var flappers = new Image();
+flappers.src = "../assets/flappers.png"
+var flappers2 = new Image();
+flappers2.src = "../assets/flappers2.jpg"
+var alCapone = new Image();
+alCapone.src = "../assets/alcapone.png"
+var ticker = new Image();
+ticker.src = "../assets/ticker.png"
+var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers, flappers2];
+
+
 //Run once page has loaded
 window.onload = function () {
   //Assign canvas and ctx variables
@@ -114,17 +130,19 @@ function draw() {
   }
 
   //Show text when on pipe
-  wall.src = "../assets/wall.jpg";
+  wall.src = "../assets/journal.png";
   if(player.x >= 551 && player.x < 700) {
-    ctx.textAlign = "center";
-    ctx.drawImage(wall, canvas.width / 5, 50, 750, 350);
+    ctx.textAlign = "";
+    ctx.drawImage(wall, 30, 30, 780, 380);
     ctx.font = "normal normal bold 14px";
     ctx.fillStyle = "white";
-    splitTexts(ctx, paragraphs, canvas.width / 2, 100, maxWidth, lineHeight);
+    splitTexts(ctx, paragraphs, 70, 70, maxWidth, lineHeight);
+    ctx.drawImage(imagesPresentation[currentLevel], ((canvas.width / 5)+550), 35, 400, 450);
     //ctx.fillText(paragraphs[currentLevel], (canvas.width / 2) , 100);
   } else {
     ctx.textAlign = "start";
   }
+  
 }
 
 function setupInputs() {
