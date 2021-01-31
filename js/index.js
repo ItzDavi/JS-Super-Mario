@@ -27,6 +27,9 @@ var startingY;
 //Levels variables
 var currentLevel = 0;
 
+//audio
+var audio = new Audio('../assets/music.mp3');
+
 //Images
 var wallace1 = new Image();
 wallace1.src = "../assets/wallace.jpeg"
@@ -45,6 +48,8 @@ var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers2, flapp
 
 //Run once page has loaded
 window.onload = function () {
+  audio.volume = 0.2;
+
   //Assign canvas and ctx variables
   canvas = document.getElementById("game-canvas");
   ctx = canvas.getContext("2d");
@@ -148,6 +153,7 @@ function draw() {
 function setupInputs() {
   //Listener for when a key is pressed
   document.addEventListener("keydown", function(event){
+    audio.play();
     if ((event.key === "w" || event.key === "ArrowUp") && isJumpPossible) {
         upKey = true;
     } else if (event.key === "a" || event.key === "ArrowLeft") {
