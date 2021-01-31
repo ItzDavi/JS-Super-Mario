@@ -15,9 +15,9 @@ var y = 60;
 // i testi delle frasi da mostrare nei vari "livelli"
 var paragraphs = [
     "La crisi del 29 è iniziata con blah blah blah blah blah blahblah blah blahblah blah blahblah blah blahblah blah blahblah blah blahblah blah blahblah blah blahblah blah blah",
-    "",
-    "",
-    ""
+    "livello 1",
+    "livello 2",
+    "I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa Da ba dee da ba daa, da ba dee da ba daa I'm blue, da ba dee da "
 ];
 
 //Subtitles near the game argument
@@ -31,8 +31,7 @@ var subtitles = [
 
 function splitTexts (ctx, paragraphs, x, y, maxWidth, lineHeight) {
   //Divides the paragraphs in words
-  for (let i = 0; i < paragraphs.length; i++){
-    words = paragraphs[i].split(" ");
+    words = paragraphs[currentLevel].split(" ");
     line = "";
 
     for (let i = 0; i < words.length; i++) {
@@ -52,5 +51,5 @@ function splitTexts (ctx, paragraphs, x, y, maxWidth, lineHeight) {
       }
     }
     ctx.fillText(line, x, y);
-  }
+  
 }

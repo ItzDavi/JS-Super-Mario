@@ -87,12 +87,12 @@ function step() {
 
 function draw() {
   //Draw canvas background
-  canvasBackground.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/cloudsFixed.jpg";
+  canvasBackground.src = "../assets/cloudsFixed.jpg";
   ctx.drawImage(canvasBackground, 0, 0);
 
   //Draw signs
-  signNext.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/sign.png";
-  signPrev.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/signrev.png";
+  signNext.src = "../assets/sign.png";
+  signPrev.src = "../assets/signrev.png";
   if(currentLevel + 1 < paragraphs.length)
     ctx.drawImage(signNext, 1150, 530, 100, 100);
   if(currentLevel != 0)
@@ -114,7 +114,7 @@ function draw() {
   }
 
   //Show text when on pipe
-  wall.src = "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/wall.jpg";
+  wall.src = "../assets/wall.jpg";
   if(player.x >= 551 && player.x < 700) {
     ctx.textAlign = "center";
     ctx.drawImage(wall, canvas.width / 5, 50, 750, 350);
@@ -231,5 +231,4 @@ function changeLevel(player, direction) {
     player.x = 300;
   }
   document.getElementsByTagName("h2")[0].textContent = subtitles[currentLevel];
-  console.log(currentLevel);
 }
