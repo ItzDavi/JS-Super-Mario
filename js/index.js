@@ -28,21 +28,21 @@ var startingY;
 var currentLevel = 0;
 
 //audio
-var audio = new Audio('../assets/music.mp3');
+var audio = new Audio('assets/music.mp3');
 
 //Images
 var wallace1 = new Image();
-wallace1.src = "../assets/wallace.jpeg"
+wallace1.src = "assets/wallace.jpeg"
 var wallace2 = new Image();
-wallace2.src = "../assets/wallace2.jpg"
+wallace2.src = "assets/wallace2.jpg"
 var flappers = new Image();
-flappers.src = "../assets/flappers.jpg"
+flappers.src = "assets/flappers.jpg"
 var flappers2 = new Image();
-flappers2.src = "../assets/flappers2.jpg"
+flappers2.src = "assets/flappers2.jpg"
 var alCapone = new Image();
-alCapone.src = "../assets/alcapone.png"
+alCapone.src = "assets/alcapone.png"
 var ticker = new Image();
-ticker.src = "../assets/ticker.png"
+ticker.src = "assets/ticker.png"
 var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers2, flappers];
 
 
@@ -108,12 +108,12 @@ function step() {
 
 function draw() {
   //Draw canvas background
-  canvasBackground.src = "../assets/bg2.jpg";
+  canvasBackground.src = "assets/bg2.jpg";
   ctx.drawImage(canvasBackground, 0, 0, 1280, 720);
 
   //Draw signs
-  signNext.src = "../assets/signwhite.png";
-  signPrev.src = "../assets/signrevwhite.png";
+  signNext.src = "assets/signwhite.png";
+  signPrev.src = "assets/signrevwhite.png";
   if(currentLevel + 1 < paragraphs.length)
     ctx.drawImage(signNext, 1100, 490, 150, 150);
   if(currentLevel != 0)
@@ -135,7 +135,7 @@ function draw() {
   }
 
   //Show text when on pipe
-  wall.src = "../assets/journal.png";
+  wall.src = "assets/journal.png";
   if(player.x >= 551 && player.x < 700) {
     ctx.textAlign = "";
     ctx.drawImage(wall, 30, 30, 750, 380);

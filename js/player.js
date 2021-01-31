@@ -129,7 +129,7 @@ function Player(x, y, borders) {
   this.draw = function() {
     if (this.facing === 0) {
       let marioSkin = new Image();
-      marioSkin.src = "../assets/rightstill.png";
+      marioSkin.src = "assets/rightstill.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     } else if (this.facing === 1) {
       let marioSkin = new Image();
