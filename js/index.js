@@ -29,31 +29,31 @@ var currentLevel = 0;
 
 //Images
 var wallace1 = new Image();
-wallace1.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/wallace.jpeg";
+wallace1.src = "assets/wallace.jpeg";
 var wallace2 = new Image();
-wallace2.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/wallace2.jpg";
+wallace2.src = "assets/wallace2.jpg";
 var flappers = new Image();
-flappers.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/flappers.png";
+flappers.src = "assets/flappers.png";
 var flappers2 = new Image();
-flappers2.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/flappers2.jpg";
+flappers2.src = "assets/flappers2.jpg";
 var alCapone = new Image();
-alCapone.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/alcapone.png";
+alCapone.src = "assets/alcapone.png";
 var ticker = new Image();
-ticker.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/ticker.png";
+ticker.src = "assets/ticker.png";
 var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers, flappers2];
 
 var wallaceJournal1 = new Image();
-wallaceJournal1.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/wallacejournal1.png";
+wallaceJournal1.src = "assets/wallacejournal1.png";
 var wallaceJournal2 = new Image();
-wallaceJournal2.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/wallacejournal2.png";
+wallaceJournal2.src = "assets/wallacejournal2.png";
 var alCaponeJournal = new Image();
-alCaponeJournal.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/alcaponejournal.png";
+alCaponeJournal.src = "assets/alcaponejournal.png";
 var tickerJournal = new Image();
-tickerJournal.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/tickerjournal.png";
+tickerJournal.src = "assets/tickerjournal.png";
 var flappersJournal1 = new Image();
-flappersJournal1.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/flappersjournal1.png";
+flappersJournal1.src = "assets/flappersjournal1.png";
 var flappersJournal2 = new Image();
-flappersJournal2.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/flappersjournal2.png";
+flappersJournal2.src = "assets/flappersjournal2.png";
 var wall = [wallaceJournal1, wallaceJournal2, alCaponeJournal, tickerJournal, flappersJournal1, flappersJournal2];
 
 
@@ -118,12 +118,12 @@ function step() {
 
 function draw() {
   //Draw canvas background
-  canvasBackground.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/bg1.jpg";
+  canvasBackground.src = "assets/bg1.jpg";
   ctx.drawImage(canvasBackground, 0, 0, 1280, 720);
 
   //Draw signs
-  signNext.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/signwhite.png";
-  signPrev.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/signrevwhite.png";
+  signNext.src = "assets/signwhite.png";
+  signPrev.src = "assets/signrevwhite.png";
   if(currentLevel + 1 < paragraphs.length)
     ctx.drawImage(signNext, 1100, 490, 150, 150);
   if(currentLevel != 0)
@@ -146,7 +146,7 @@ function draw() {
   }
 
   //Show text when on pipe
-  wall.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/journal.png";
+  wall.src = "assets/journal.png";
   if(player.x >= 551 && player.x < 700) {
     //ctx.textAlign = "";
     ctx.drawImage(wall[currentLevel], 10, 10, 850, 450);
