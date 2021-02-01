@@ -1,6 +1,5 @@
 # Super Mario
-HTML, CSS, Javascript and PHP
-* School project
+HTML, CSS, Javascript and PHP School project
 
 * TODO LIST
 1. Add coin
