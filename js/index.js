@@ -8,7 +8,6 @@ var pipe = new Image();
 var signNext = new Image();
 var signPrev = new Image();
 var invisibleBorders = new Image();
-var wall = new Image();
 
 //Input variables
 var upKey;
@@ -21,36 +20,47 @@ var gameLoop;
 var player;
 var all_borders;
 var isJumpPossible;
-var maxJumpTime = 200; //in milliseconds
+var maxJumpTime = 250; //in milliseconds
 var startingY;
+var audio = new Audio('assets/music.mp3');
 
 //Levels variables
 var currentLevel = 0;
 
-//audio
-var audio = new Audio('assets/music.mp3');
-
 //Images
 var wallace1 = new Image();
-wallace1.src = "assets/wallace.jpeg"
+wallace1.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/wallace.jpeg";
 var wallace2 = new Image();
-wallace2.src = "assets/wallace2.jpg"
+wallace2.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/wallace2.jpg";
 var flappers = new Image();
-flappers.src = "assets/flappers.jpg"
+flappers.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/flappers.png";
 var flappers2 = new Image();
-flappers2.src = "assets/flappers2.jpg"
+flappers2.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/flappers2.jpg";
 var alCapone = new Image();
-alCapone.src = "assets/alcapone.png"
+alCapone.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/alcapone.png";
 var ticker = new Image();
-ticker.src = "assets/ticker.png"
-var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers2, flappers];
+ticker.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/ticker.png";
+var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers, flappers2];
+
+var wallaceJournal1 = new Image();
+wallaceJournal1.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/wallacejournal1.png";
+var wallaceJournal2 = new Image();
+wallaceJournal2.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/wallacejournal2.png";
+var alCaponeJournal = new Image();
+alCaponeJournal.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/alcaponejournal.png";
+var tickerJournal = new Image();
+tickerJournal.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/tickerjournal.png";
+var flappersJournal1 = new Image();
+flappersJournal1.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/flappersjournal1.png";
+var flappersJournal2 = new Image();
+flappersJournal2.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/flappersjournal2.png";
+var wall = [wallaceJournal1, wallaceJournal2, alCaponeJournal, tickerJournal, flappersJournal1, flappersJournal2];
 
 
 //Run once page has loaded
 window.onload = function () {
-  audio.volume = 0.2;
-
   //Assign canvas and ctx variables
+  audio.volume = 0.2;
   canvas = document.getElementById("game-canvas");
   ctx = canvas.getContext("2d");
   ctx.fillStyle = "black";
@@ -108,12 +118,12 @@ function step() {
 
 function draw() {
   //Draw canvas background
-  canvasBackground.src = "assets/bg2.jpg";
+  canvasBackground.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/bg1.jpg";
   ctx.drawImage(canvasBackground, 0, 0, 1280, 720);
 
   //Draw signs
-  signNext.src = "assets/signwhite.png";
-  signPrev.src = "assets/signrevwhite.png";
+  signNext.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/signwhite.png";
+  signPrev.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/signrevwhite.png";
   if(currentLevel + 1 < paragraphs.length)
     ctx.drawImage(signNext, 1100, 490, 150, 150);
   if(currentLevel != 0)
@@ -127,27 +137,28 @@ function draw() {
 
   //Show text when on signs for better ux
   if(player.x >= 1100 && currentLevel + 1 < paragraphs.length) {
+    ctx.fillStyle = "white";
     ctx.fillText("Premi invio per andare", 1100, 450, 120);
-    ctx.fillText("al livello sucessivo", 1110, 470, 100);
+    ctx.fillText("al livello successivo", 1110, 470, 100);
   } else if(player.x <= 150 && currentLevel > 0) {
     ctx.fillText("Premi invio per andare", 50, 450, 120);
     ctx.fillText("al livello precedente", 60, 470, 100);
   }
 
   //Show text when on pipe
-  wall.src = "assets/journal.png";
+  wall.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/journal.png";
   if(player.x >= 551 && player.x < 700) {
-    ctx.textAlign = "";
-    ctx.drawImage(wall, 30, 30, 750, 380);
-    ctx.font = "normal normal bold 14px";
-    ctx.fillStyle = "white";
-    splitTexts(ctx, paragraphs, 70, 70, maxWidth, lineHeight);
+    //ctx.textAlign = "";
+    ctx.drawImage(wall[currentLevel], 10, 10, 850, 450);
+    //ctx.font = "normal normal bold 14px";
+    //ctx.fillStyle = "white";
+    //splitTexts(ctx, paragraphs, 70, 70, maxWidth, lineHeight);
     ctx.drawImage(imagesPresentation[currentLevel], ((canvas.width / 5)+550), 35, 400, 450);
     //ctx.fillText(paragraphs[currentLevel], (canvas.width / 2) , 100);
   } else {
-    ctx.textAlign = "start";
+    //ctx.textAlign = "start";
   }
-  
+
 }
 
 function setupInputs() {
