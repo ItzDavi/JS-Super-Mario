@@ -129,19 +129,19 @@ function Player(x, y, borders) {
   this.draw = function() {
     if (this.facing === 0) {
       let marioSkin = new Image();
-      marioSkin.src = "assets/rightstill.png";
+      marioSkin.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/rightstill.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     } else if (this.facing === 1) {
       let marioSkin = new Image();
-      marioSkin.src = "./assets/rightmov.png";
+      marioSkin.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/rightmov.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     } else if (this.facing === 2) {
       let marioSkin = new Image();
-      marioSkin.src = "./assets/leftmov.png";
+      marioSkin.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/leftmov.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     } else if (this.facing === 3) {
       let marioSkin = new Image();
-      marioSkin.src = "./assets/leftstill.png";
+      marioSkin.src = "C:/Users/Davide/Desktop/JS-Super-Mario-main/assets/leftstill.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     }
   }
