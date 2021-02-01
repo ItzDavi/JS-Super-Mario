@@ -33,14 +33,14 @@ wallace1.src = "assets/wallace.jpeg";
 var wallace2 = new Image();
 wallace2.src = "assets/wallace2.jpg";
 var flappers = new Image();
-flappers.src = "assets/flappers.png";
+flappers.src = "assets/flappers.jpg";
 var flappers2 = new Image();
 flappers2.src = "assets/flappers2.jpg";
 var alCapone = new Image();
 alCapone.src = "assets/alcapone.png";
 var ticker = new Image();
 ticker.src = "assets/ticker.png";
-var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers, flappers2];
+var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers2, flappers];
 
 var wallaceJournal1 = new Image();
 wallaceJournal1.src = "assets/wallacejournal1.png";
