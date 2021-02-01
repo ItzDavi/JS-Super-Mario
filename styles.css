@@ -8,6 +8,14 @@ canvas {
   background-image: "C:/Program Files (x86)/EasyPHP-Devserver-17/eds-www/JS Super Mario/assets/cloudsFixed.jpg";
 }
 
-reverse {
-  transform: scaleX(-1);
+.fab {
+  color: white;
+}
+
+ul {
+  margin: 0 auto;
+}
+
+i {
+  margin: 7px;
 }
