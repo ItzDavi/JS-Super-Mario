@@ -26,11 +26,11 @@ var paragraphs = [
 // i sottotitoli dei paragrafi
 var subtitles = [
     "Wallace",
-    "Wallace pt 2",
+    "Wallace",
     "Al Capone",
     "Il nastro Ticker",
     "Le Flappers",
-    "Le Flappers pt 2"
+    "Le Flappers"
 ]
 
 function splitTexts (ctx, paragraphs, x, y, maxWidth, lineHeight) {
