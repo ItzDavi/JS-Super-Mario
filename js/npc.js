@@ -1,4 +1,4 @@
-function Bodyguard(x, y, player) {
+function Bodyguard (x, y, player) {
   this.x = x;
   this.y = y;
   this.xspeed = 25;
@@ -7,11 +7,16 @@ function Bodyguard(x, y, player) {
   this.height = 170;
   this.facing = 0;
 
-  this.enter = function () {
-    setTimeout(() => {this.x -= this.xspeed}, 1000);
+  this.pushPlayer = function (player) {
+    this.x -= this.xspeed;
     player.x -= this.xspeed;
     if (this.x <= 1050) {
+      player.xspeed = 0;
       this.xspeed = 0;
+  }
+
+  this.enter = function (player) {
+    setTimeout(() => {this.pushPlayer(player)}, 1000);
     }
   }
 

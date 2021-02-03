@@ -156,7 +156,7 @@ function step() {
     document.getElementById("password").classList.add("visible");
   }
 
-  
+
 }
 
 function draw() {
@@ -182,13 +182,6 @@ function draw() {
   //Draw Player
   player.draw();
 
-  //Draw standing bodyguard if on the second Levels
-  if (currentLevel == 2) {
-    bodyguard.draw();
-  } else {
-
-  }
-
   //Draw borders
   all_borders.allBorders.forEach(border => border.draw());
 
@@ -210,6 +203,16 @@ function draw() {
     ctx.drawImage(imagesPresentation[currentLevel], ((canvas.width / 5)+550), 35, 400, 450);
   }
 
+  //Draw standing bodyguard if on the second Levels
+  if (currentLevel == 2) {
+    bodyguard.draw();
+    if (player.x >= 1100 && currentLevel >= 2){
+      console.log("pushing player");
+      bodyguard.enter(player);
+    }
+  } else {
+
+  }
 }
 
 function setupInputs() {
