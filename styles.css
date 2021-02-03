@@ -21,12 +21,18 @@ i {
 
 #password {
   text-align: center;
-}
-
-input::placeholder{
   color: grey;
+  border: none;
 }
 
 #github {
   color: grey;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
 }

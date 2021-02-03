@@ -7,6 +7,8 @@ var grassBackground = new Image();
 var pipe = new Image();
 var signNext = new Image();
 var signPrev = new Image();
+var normalSignNext = new Image();
+var normalSignPrev = new Image();
 var invisibleBorders = new Image();
 var speakEasyPassword = "1929";
 
@@ -98,17 +100,13 @@ window.onload = function () {
 
   //Create borders
   all_borders = new Borders();
-  for(let i = 0; i < 6; i++) {
-   all_borders.newBorder(0, 620, 1280, 720, 1);
-  }
-
-  for(let i = 0; i < 3; i++) {
-    all_borders.newBorder(600, 420+100, 100, 100, 2);
-  }
+  all_borders.newBorder(0, 620, 1280, 720, 1);
+  all_borders.newBorder(600, 520, 100, 100, 2);
 
   //Create Player
   player = new Player(300,400, all_borders);
   bodyguard = new Bodyguard(1105, 450);
+
   //Game loop
   gameLoop = setInterval(step, 1000/60);
 }
@@ -135,12 +133,30 @@ function step() {
     }, maxJumpTime);
   }
 
+  //Avoid fly bug
+  if(player.y < 250){
+    isJumpPossible = false;
+    upKey = false;
+  }
+
   //Set ground y
-  if(player.x >= 551 && player.x < 700) {
+  if(player.x > 550 && player.x <= 700) {
     startingY = 420;
   } else {
     startingY = 520;
   }
+
+  //Hide password input when it isn't used
+  if(currentLevel < 2){
+    document.getElementById("password").classList.add("invisible");
+    document.getElementById("password").classList.remove("visible");
+  }
+  else {
+    document.getElementById("password").classList.remove("invisible");
+    document.getElementById("password").classList.add("visible");
+  }
+
+  
 }
 
 function draw() {
@@ -151,10 +167,17 @@ function draw() {
   //Draw signs
   signNext.src = "assets/signwhite.png";
   signPrev.src = "assets/signrevwhite.png";
+  normalSignNext.src = "assets/normalsign.png"
+  normalSignPrev.src = "assets/normalsignrev.png"
+
   if(currentLevel + 1 < paragraphs.length && currentLevel >= 2)
     ctx.drawImage(signNext, 1100, 490, 150, 150);
+  else if(currentLevel == 0 || currentLevel == 1)
+    ctx.drawImage(normalSignNext, 1100, 490, 150, 150);
   if(currentLevel > 2)
     ctx.drawImage(signPrev, 30, 490, 150, 150);
+  else if(currentLevel > 0 && currentLevel <= 2)
+    ctx.drawImage(normalSignPrev, 30, 490, 150, 150);
 
   //Draw Player
   player.draw();
@@ -221,8 +244,11 @@ function setupInputs() {
       if(player.x >= 1100) {
           if (checkSpeakEasyPassword()) {
             changeLevel(player, "next");
+            document.activeElement.blur();
           } else {
             alert("Per entrare negli SpeakEasy devi inserire la password corretta");
+            document.getElementById("password").value = "";
+            document.getElementById("password").focus();
           }
       } else if(player.x <= 150) {
         changeLevel(player, "prev");
