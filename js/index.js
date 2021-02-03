@@ -45,13 +45,13 @@ flappers.src = "assets/flappers.jpg";
 var flappers2 = new Image();
 flappers2.src = "assets/flappers2.jpg";
 var femminismo = new Image();
-femminismo.src = "assets/flappers2.jpg";
+femminismo.src = "assets/womenvote.jpg";
 var ticker = new Image();
 ticker.src = "assets/ticker.png";
 var wallStreet = new Image();
-wallStreet.src = "assets/ticker.png";
+wallStreet.src = "assets/wallstreet.jpg";
 var martediNero = new Image();
-martediNero.src = "assets/ticker.png";
+martediNero.src = "assets/martedinero1.jpg";
 var imagesPresentation = [crisi29, wallace1, wallace2, alCapone, gangsterismo, proibizionismo, ticker, wallStreet, martediNero, flappers2, flappers, femminismo];
 
 //Journals images
@@ -98,13 +98,8 @@ window.onload = function () {
 
   //Create borders
   all_borders = new Borders();
-  for(let i = 0; i < 6; i++) {
-   all_borders.newBorder(0, 620, 1280, 720, 1);
-  }
-
-  for(let i = 0; i < 3; i++) {
-    all_borders.newBorder(600, 420+100, 100, 100, 2);
-  }
+  all_borders.newBorder(0, 620, 1280, 720, 1);
+  all_borders.newBorder(600, 520, 100, 100, 2);
 
   //Create Player
   player = new Player(300,400, all_borders);
@@ -135,8 +130,14 @@ function step() {
     }, maxJumpTime);
   }
 
+  //Turn off jump if player bugged the game
+  if(player.y < 250){
+    isJumpPossible = false;
+    upKey = false;
+  }
+
   //Set ground y
-  if(player.x >= 551 && player.x < 700) {
+  if(player.x > 550 && player.x <= 700) {
     startingY = 420;
   } else {
     startingY = 520;
