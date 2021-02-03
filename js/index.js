@@ -240,7 +240,9 @@ function setupInputs() {
   }});
   //Listener for the ENTER key
   document.addEventListener("keypress", function(event) {
-    if (event.keyCode === 13) { //enter key
+    //Check for enter key press
+    if (event.keyCode === 13) {
+      //if player is on signs
       if(player.x >= 1100) {
           if (checkSpeakEasyPassword()) {
             changeLevel(player, "next");
@@ -249,6 +251,7 @@ function setupInputs() {
             alert("Per entrare negli SpeakEasy devi inserire la password corretta");
             document.getElementById("password").value = "";
             document.getElementById("password").focus();
+            upKey = downkey = leftKey = rightKey = false;
           }
       } else if(player.x <= 150) {
         changeLevel(player, "prev");
