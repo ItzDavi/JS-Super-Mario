@@ -19,6 +19,7 @@ var leftKey;
 //Game variables
 var gameLoop;
 var player;
+var bodyguard;
 var all_borders;
 var isJumpPossible;
 var maxJumpTime = 250; //in milliseconds
@@ -107,7 +108,7 @@ window.onload = function () {
 
   //Create Player
   player = new Player(300,400, all_borders);
-
+  bodyguard = new Bodyguard(1105, 450);
   //Game loop
   gameLoop = setInterval(step, 1000/60);
 }
@@ -150,23 +151,31 @@ function draw() {
   //Draw signs
   signNext.src = "assets/signwhite.png";
   signPrev.src = "assets/signrevwhite.png";
-  if(currentLevel + 1 < paragraphs.length)
+  if(currentLevel + 1 < paragraphs.length && currentLevel >= 2)
     ctx.drawImage(signNext, 1100, 490, 150, 150);
-  if(currentLevel != 0)
+  if(currentLevel > 2)
     ctx.drawImage(signPrev, 30, 490, 150, 150);
 
   //Draw Player
   player.draw();
 
+  //Draw standing bodyguard if on the second Levels
+  if (currentLevel == 2) {
+    bodyguard.draw();
+  } else {
+
+  }
+
   //Draw borders
   all_borders.allBorders.forEach(border => border.draw());
 
   //Show text when on signs for better ux
-  if(player.x >= 1100 && currentLevel + 1 < paragraphs.length) {
+  if(player.x >= 1100 && currentLevel >= 0 && currentLevel + 1 < paragraphs.length) {
     ctx.fillStyle = "white";
     ctx.fillText("Premi invio per andare", 1100, 450, 120);
     ctx.fillText("al livello successivo", 1110, 470, 100);
-  } else if(player.x <= 150 && currentLevel > 0) {
+  } else if(player.x <= 150 && currentLevel >= 1) {
+    ctx.fillStyle = "white";
     ctx.fillText("Premi invio per andare", 50, 450, 120);
     ctx.fillText("al livello precedente", 60, 470, 100);
   }
@@ -293,6 +302,7 @@ function changeLevel(player, direction) {
 
 //Check speakeasy password
 function checkSpeakEasyPassword () {
+  player.xspeed = 0;
   if (currentLevel == 0 || currentLevel == 1) {
     return true;
   } else {

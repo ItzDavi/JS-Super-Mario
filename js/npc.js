@@ -3,8 +3,8 @@ function Bodyguard(x, y, player) {
   this.y = y;
   this.xspeed = 25;
 
-  this.width = 50;
-  this.height = 100;
+  this.width = 150;
+  this.height = 170;
   this.facing = 0;
 
   this.enter = function () {
@@ -18,7 +18,7 @@ function Bodyguard(x, y, player) {
   this.draw = function () {
     if (this.facing === 0) {
       let bodyguardSkin = new Image();
-      bodyguardSkin.src = "assets/leftstill.png";
+      bodyguardSkin.src = "assets/npcleftstill.png";
       ctx.drawImage(bodyguardSkin, this.x, this.y, this.width, this.height);
     }
   }
