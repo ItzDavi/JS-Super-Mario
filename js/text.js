@@ -36,7 +36,7 @@ var subtitles = [
     "Wallace",
     "Al Capone",
     "Gangsterismo",
-    "Proibizionismo e speakeasy",
+    "Proibizionismo",
     "Il nastro Ticker",
     "Wall Street",
     "Il martedì nero",

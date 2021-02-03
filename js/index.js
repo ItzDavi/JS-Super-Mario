@@ -29,37 +29,62 @@ var audio = new Audio('assets/music.mp3');
 var currentLevel = 0;
 
 //Images
+var crisi = new Image();
+crisi.src = "assets/wallace.jpeg";
 var wallace1 = new Image();
 wallace1.src = "assets/wallace.jpeg";
 var wallace2 = new Image();
 wallace2.src = "assets/wallace2.jpg";
-var flappers = new Image();
-flappers.src = "assets/flappers.png";
-var flappers2 = new Image();
-flappers2.src = "assets/flappers2.jpg";
 var alCapone = new Image();
 alCapone.src = "assets/alcapone.png";
+var gangster = new Image();
+gangster.src = "assets/alcapone.png";
+var proibizionismo = new Image();
+proibizionismo.src = "assets/alcapone.png";
 var ticker = new Image();
 ticker.src = "assets/ticker.png";
-var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers, flappers2];
+var wallstreet = new Image();
+wallstreet.src = "assets/wallstreet.jpg";
+var martedinero = new Image();
+martedinero.src = "assets/martedinero1.jpg";
+var flappers = new Image();
+flappers.src = "assets/flappers.jpg";
+var flappers2 = new Image();
+flappers2.src = "assets/flappers2.jpg";
+var femminismo = new Image();
+femminismo.src = "assets/womenvote.jpg";
+var imagesPresentation = [crisi, wallace1, wallace2, alCapone, gangster, proibizionismo, ticker, wallstreet, martedinero, flappers2, flappers, femminismo];
 
+var crisiJournal = new Image();
+crisiJournal.src = "assets/wallacejournal1.png";
 var wallaceJournal1 = new Image();
 wallaceJournal1.src = "assets/wallacejournal1.png";
 var wallaceJournal2 = new Image();
 wallaceJournal2.src = "assets/wallacejournal2.png";
 var alCaponeJournal = new Image();
 alCaponeJournal.src = "assets/alcaponejournal.png";
+var gangsterJournal = new Image();
+gangsterJournal.src = "assets/alcaponejournal.png";
+var proibizionismoJournal = new Image();
+proibizionismoJournal.src = "assets/alcaponejournal.png";
 var tickerJournal = new Image();
 tickerJournal.src = "assets/tickerjournal.png";
+var wallstreetJournal = new Image();
+wallstreetJournal.src = "assets/tickerjournal.png";
+var martedineroJournal = new Image();
+martedineroJournal.src = "assets/tickerjournal.png";
 var flappersJournal1 = new Image();
 flappersJournal1.src = "assets/flappersjournal1.png";
 var flappersJournal2 = new Image();
 flappersJournal2.src = "assets/flappersjournal2.png";
-var wall = [wallaceJournal1, wallaceJournal2, alCaponeJournal, tickerJournal, flappersJournal1, flappersJournal2];
+var femminismoJournal = new Image();
+femminismoJournal.src = "assets/flappersjournal2.png";
+var wall = [crisiJournal, wallaceJournal1, wallaceJournal2, alCaponeJournal, gangsterJournal, proibizionismoJournal, tickerJournal,wallstreetJournal,martedineroJournal, flappersJournal1, flappersJournal2, femminismoJournal];
 
 
 //Run once page has loaded
 window.onload = function () {
+  document.getElementsByTagName("h2")[0].innerText = subtitles[currentLevel];
   //Assign canvas and ctx variables
   audio.volume = 0.2;
   canvas = document.getElementById("game-canvas");
@@ -149,15 +174,8 @@ function draw() {
   //Show text when on pipe
   wall.src = "assets/journal.png";
   if(player.x >= 551 && player.x < 700) {
-    //ctx.textAlign = "";
     ctx.drawImage(wall[currentLevel], 10, 10, 850, 450);
-    //ctx.font = "normal normal bold 14px";
-    //ctx.fillStyle = "white";
-    //splitTexts(ctx, paragraphs, 70, 70, maxWidth, lineHeight);
     ctx.drawImage(imagesPresentation[currentLevel], ((canvas.width / 5)+550), 35, 400, 450);
-    //ctx.fillText(paragraphs[currentLevel], (canvas.width / 2) , 100);
-  } else {
-    //ctx.textAlign = "start";
   }
 
 }
@@ -275,9 +293,9 @@ function changeLevel(player, direction) {
 
 //Check speakeasy password
 function checkSpeakEasyPassword () {
-  if (currentLevel >= 0 && currentLevel < 1) {
+  if (currentLevel == 0 || currentLevel == 1) {
     return true;
-  } else if (currentLevel >= 1) {
+  } else {
     let password = document.getElementById("password").value;
     if (password === speakEasyPassword) {
       return true;
