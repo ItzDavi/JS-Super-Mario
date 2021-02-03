@@ -8,7 +8,7 @@ canvas {
 }
 
 .fab {
-  color: white;
+  color: grey;
 }
 
 ul {
@@ -17,4 +17,16 @@ ul {
 
 i {
   margin: 7px;
+}
+
+#password {
+  text-align: center;
+}
+
+input::placeholder{
+  color: grey;
+}
+
+#github {
+  color: grey;
 }
