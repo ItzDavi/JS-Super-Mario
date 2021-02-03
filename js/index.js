@@ -28,37 +28,64 @@ var audio = new Audio('assets/music.mp3');
 var currentLevel = 0;
 
 //Images
+var crisi29 = new Image();
+crisi29.src = "assets/wallace.jpeg";
 var wallace1 = new Image();
 wallace1.src = "assets/wallace.jpeg";
 var wallace2 = new Image();
 wallace2.src = "assets/wallace2.jpg";
+var alCapone = new Image();
+alCapone.src = "assets/alcapone.png";
+var gangsterismo = new Image();
+gangsterismo.src = "assets/alcapone.png";
+var proibizionismo = new Image();
+proibizionismo.src = "assets/alcapone.png";
 var flappers = new Image();
 flappers.src = "assets/flappers.jpg";
 var flappers2 = new Image();
 flappers2.src = "assets/flappers2.jpg";
-var alCapone = new Image();
-alCapone.src = "assets/alcapone.png";
+var femminismo = new Image();
+femminismo.src = "assets/flappers2.jpg";
 var ticker = new Image();
 ticker.src = "assets/ticker.png";
-var imagesPresentation = [wallace1, wallace2, alCapone, ticker, flappers2, flappers];
+var wallStreet = new Image();
+wallStreet.src = "assets/ticker.png";
+var martediNero = new Image();
+martediNero.src = "assets/ticker.png";
+var imagesPresentation = [crisi29, wallace1, wallace2, alCapone, gangsterismo, proibizionismo, ticker, wallStreet, martediNero, flappers2, flappers, femminismo];
 
+//Journals images
+var crisi29Journal = new Image();
+crisi29Journal.src = "assets/wallacejournal1.png";
 var wallaceJournal1 = new Image();
 wallaceJournal1.src = "assets/wallacejournal1.png";
 var wallaceJournal2 = new Image();
 wallaceJournal2.src = "assets/wallacejournal2.png";
 var alCaponeJournal = new Image();
 alCaponeJournal.src = "assets/alcaponejournal.png";
+var gangsterismoJournal = new Image();
+gangsterismoJournal.src = "assets/alcapone.png";
+var proibizionismoJournal = new Image();
+proibizionismoJournal.src = "assets/alcapone.png";
 var tickerJournal = new Image();
 tickerJournal.src = "assets/tickerjournal.png";
+var wallStreetJournal = new Image();
+wallStreetJournal.src = "assets/tickerjournal.png";
+var martediNeroJournal = new Image();
+martediNeroJournal.src = "assets/tickerjournal.png";
 var flappersJournal1 = new Image();
 flappersJournal1.src = "assets/flappersjournal1.png";
 var flappersJournal2 = new Image();
 flappersJournal2.src = "assets/flappersjournal2.png";
-var wall = [wallaceJournal1, wallaceJournal2, alCaponeJournal, tickerJournal, flappersJournal1, flappersJournal2];
+var femminismoJournal = new Image();
+femminismoJournal.src = "assets/flappersjournal2.png";
+var wall = [crisi29Journal, wallaceJournal1, wallaceJournal2, alCaponeJournal, gangsterismoJournal, proibizionismoJournal, tickerJournal, wallStreetJournal, martediNeroJournal, flappersJournal1, flappersJournal2, femminismoJournal];
 
 
 //Run once page has loaded
 window.onload = function () {
+  document.getElementsByTagName("h2")[0].innerText = subtitles[currentLevel];
+
   //Assign canvas and ctx variables
   audio.volume = 0.2;
   canvas = document.getElementById("game-canvas");
@@ -148,17 +175,9 @@ function draw() {
   //Show text when on pipe
   wall.src = "assets/journal.png";
   if(player.x >= 551 && player.x < 700) {
-    //ctx.textAlign = "";
     ctx.drawImage(wall[currentLevel], 10, 10, 850, 450);
-    //ctx.font = "normal normal bold 14px";
-    //ctx.fillStyle = "white";
-    //splitTexts(ctx, paragraphs, 70, 70, maxWidth, lineHeight);
     ctx.drawImage(imagesPresentation[currentLevel], ((canvas.width / 5)+550), 35, 400, 450);
-    //ctx.fillText(paragraphs[currentLevel], (canvas.width / 2) , 100);
-  } else {
-    //ctx.textAlign = "start";
-  }
-
+  } 
 }
 
 function setupInputs() {
