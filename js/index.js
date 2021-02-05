@@ -105,7 +105,7 @@ window.onload = function () {
 
   //Create Player
   player = new Player(300,400, all_borders);
-  bodyguard = new Bodyguard(1105, 450);
+  bodyguard = new Bodyguard(1105, 450, player);
 
   //Game loop
   gameLoop = setInterval(step, 1000/60);
@@ -206,9 +206,9 @@ function draw() {
   //Draw standing bodyguard if on the second Levels
   if (currentLevel == 2) {
     bodyguard.draw();
-    if (player.x >= 1100 && currentLevel >= 2){
-      console.log("pushing player");
-      bodyguard.enter(player);
+    if (player.x >= 1100 && bodyguard.alredyPushed == 0){
+      console.log("bbbbbb");
+      bodyguard.enter();
     }
   } else {
 
