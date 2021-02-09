@@ -201,10 +201,10 @@ function draw() {
     ctx.drawImage(imagesPresentation[currentLevel], ((canvas.width / 5)+550), 35, 400, 450);
   }
 
-  var t = 100;
+  /*var t = 100;
   setInterval(function(){
     drawHealtBar(100, 25, t, 100, 10);
-  }, 9000);
+  }, 9000);*/
 }
 
 function setupInputs() {
@@ -339,7 +339,7 @@ function checkSpeakEasyPassword () {
   }
 }
 
-function drawHealtBar(x, y, per, width, height) {
+/*function drawHealtBar(x, y, per, width, height) {
   ctx.beginPath();
   ctx.rect(x-width/2, y, width*(per/100), height);
 
@@ -354,6 +354,4 @@ function drawHealtBar(x, y, per, width, height) {
   }
   ctx.closePath();
   ctx.fill();
-
-  per--;
-}
+}*/
