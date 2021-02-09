@@ -8,6 +8,8 @@ var testLine = "";
 var metrics = "";
 var testWidth = 0;
 
+
+
 var x = ((1280 / 2) - maxWidth);
 var y = 10;
 
@@ -35,14 +37,14 @@ var subtitles = [
     "Wallace",
     "Wallace",
     "Al Capone",
-    "Gangsterismo",
     "Proibizionismo",
+    "Speakeasy",
     "Il nastro Ticker",
     "Wall Street",
     "Il martedì nero",
     "Le Flappers",
     "Le Flappers",
-    "Femminismo e diritti delle donne"
+    "Femminismo"
 ]
 
 function splitTexts (ctx, paragraphs, x, y, maxWidth, lineHeight) {

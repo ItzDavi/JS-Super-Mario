@@ -21,29 +21,28 @@ var leftKey;
 //Game variables
 var gameLoop;
 var player;
-var bodyguard;
 var all_borders;
 var isJumpPossible;
 var maxJumpTime = 250; //in milliseconds
 var startingY;
-var audio = new Audio('assets/music.mp3');
+var audio = new Audio('assets/charleston.mp3');
 
 //Levels variables
 var currentLevel = 0;
 
 //Images
 var crisi = new Image();
-crisi.src = "assets/wallace.jpeg";
+crisi.src = "assets/29.jpg";
 var wallace1 = new Image();
 wallace1.src = "assets/wallace.jpeg";
 var wallace2 = new Image();
 wallace2.src = "assets/wallace2.jpg";
 var alCapone = new Image();
 alCapone.src = "assets/alcapone.png";
-var gangster = new Image();
-gangster.src = "assets/alcapone.png";
 var proibizionismo = new Image();
-proibizionismo.src = "assets/alcapone.png";
+proibizionismo.src = "assets/proibizionismo.jpg";
+var speakeasy = new Image();
+speakeasy.src = "assets/spikizi.jpg";
 var ticker = new Image();
 ticker.src = "assets/ticker.png";
 var wallstreet = new Image();
@@ -55,21 +54,21 @@ flappers.src = "assets/flappers.jpg";
 var flappers2 = new Image();
 flappers2.src = "assets/flappers2.jpg";
 var femminismo = new Image();
-femminismo.src = "assets/womenvote.jpg";
-var imagesPresentation = [crisi, wallace1, wallace2, alCapone, gangster, proibizionismo, ticker, wallstreet, martedinero, flappers2, flappers, femminismo];
+femminismo.src = "assets/femminismo.png";
+var imagesPresentation = [crisi, wallace1, wallace2, alCapone, proibizionismo, speakeasy, ticker, wallstreet, martedinero, flappers2, flappers, femminismo];
 
 var crisiJournal = new Image();
-crisiJournal.src = "assets/wallacejournal1.png";
+crisiJournal.src = "assets/crisidel29.png";
 var wallaceJournal1 = new Image();
 wallaceJournal1.src = "assets/wallacejournal1.png";
 var wallaceJournal2 = new Image();
 wallaceJournal2.src = "assets/wallacejournal2.png";
 var alCaponeJournal = new Image();
 alCaponeJournal.src = "assets/alcaponejournal.png";
-var gangsterJournal = new Image();
-gangsterJournal.src = "assets/alcaponejournal.png";
 var proibizionismoJournal = new Image();
-proibizionismoJournal.src = "assets/alcaponejournal.png";
+proibizionismoJournal.src = "assets/proibizionismoJournal.png";
+var speakeasyJournal = new Image();
+speakeasyJournal.src = "assets/speakeasyJournal.png";
 var tickerJournal = new Image();
 tickerJournal.src = "assets/tickerjournal.png";
 var wallstreetJournal = new Image();
@@ -81,8 +80,8 @@ flappersJournal1.src = "assets/flappersjournal1.png";
 var flappersJournal2 = new Image();
 flappersJournal2.src = "assets/flappersjournal2.png";
 var femminismoJournal = new Image();
-femminismoJournal.src = "assets/flappersjournal2.png";
-var wall = [crisiJournal, wallaceJournal1, wallaceJournal2, alCaponeJournal, gangsterJournal, proibizionismoJournal, tickerJournal,wallstreetJournal,martedineroJournal, flappersJournal1, flappersJournal2, femminismoJournal];
+femminismoJournal.src = "assets/femminismoJournal.png";
+var wall = [crisiJournal, wallaceJournal1, wallaceJournal2, alCaponeJournal, proibizionismoJournal, speakeasyJournal, tickerJournal,wallstreetJournal,martedineroJournal, flappersJournal1, flappersJournal2, femminismoJournal];
 
 
 //Run once page has loaded
@@ -105,7 +104,6 @@ window.onload = function () {
 
   //Create Player
   player = new Player(300,400, all_borders);
-  bodyguard = new Bodyguard(1105, 450, player);
 
   //Game loop
   gameLoop = setInterval(step, 1000/60);
@@ -201,17 +199,6 @@ function draw() {
   if(player.x >= 551 && player.x < 700) {
     ctx.drawImage(wall[currentLevel], 10, 10, 850, 450);
     ctx.drawImage(imagesPresentation[currentLevel], ((canvas.width / 5)+550), 35, 400, 450);
-  }
-
-  //Draw standing bodyguard if on the second Levels
-  if (currentLevel == 2) {
-    bodyguard.draw();
-    if (player.x >= 1100 && bodyguard.alredyPushed == 0){
-      console.log("bbbbbb");
-      bodyguard.enter();
-    }
-  } else {
-
   }
 }
 
