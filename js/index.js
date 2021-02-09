@@ -354,4 +354,6 @@ function drawHealtBar(x, y, per, width, height) {
   }
   ctx.closePath();
   ctx.fill();
+
+  per--;
 }
