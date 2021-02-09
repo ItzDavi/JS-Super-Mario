@@ -1,6 +1,9 @@
 # Super Mario
 HTML, CSS, Javascript and PHP School project
 
+The game now basically works but more improvements and updates will be added
+Right now the game is a History project regarding the 1929 wall street crack
+
 * TODO LIST
 1. Add coin
 2. Add login
