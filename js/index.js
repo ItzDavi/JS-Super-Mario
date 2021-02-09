@@ -200,6 +200,11 @@ function draw() {
     ctx.drawImage(wall[currentLevel], 10, 10, 850, 450);
     ctx.drawImage(imagesPresentation[currentLevel], ((canvas.width / 5)+550), 35, 400, 450);
   }
+
+  var t = 100;
+  setInterval(function(){
+    drawHealtBar(100, 25, t, 100, 10);
+  }, 9000);
 }
 
 function setupInputs() {
@@ -332,4 +337,21 @@ function checkSpeakEasyPassword () {
       return false;
     }
   }
+}
+
+function drawHealtBar(x, y, per, width, height) {
+  ctx.beginPath();
+  ctx.rect(x-width/2, y, width*(per/100), height);
+
+  if (per > 63) {
+    ctx.fillStyle = "green";
+  } else if (per > 37) {
+    ctx.fillStyle = "gold";
+  } else if (per > 13) {
+    ctx.fillStyle = "orange";
+  } else {
+    ctx.fillStyle = "red";
+  }
+  ctx.closePath();
+  ctx.fill();
 }
