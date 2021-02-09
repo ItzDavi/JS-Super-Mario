@@ -12,7 +12,7 @@ class Border {
       grassBackground.src = "assets/ground.jpg";
       ctx.drawImage(grassBackground, this.x, this.y, 1280, 100);
     } else if (this.type === 2) {
-      pipe.src = "assets/car.png"
+      pipe.src = "assets/car.png";
       ctx.drawImage(pipe, this.x, this.y, this.width, this.height);
     }
   }
