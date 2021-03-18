@@ -16,10 +16,57 @@
   </head>
 
   <body>
+    <audio id="myAudio" src="assets/charleston.mp3" preload="auto"></audio>
     <h1>La crisi del 1929</h1>
     <h2>Wallace</h2>
 
+    <script type="text/javascript">
+      var startGame = function() {
+        document.getElementById('menu').style.display = "none";
+      }
+
+      var myAudio = document.getElementById("myAudio");
+      var isPlaying = false;
+
+      function togglePlay() {
+        isPlaying ? myAudio.pause() : myAudio.play();
+      };
+
+      myAudio.onplaying = function() {
+        isPlaying = true;
+      };
+      myAudio.onpause = function() {
+        isPlaying = false;
+      };
+
+      /*var backMenu = function() {
+        document.getElementById('menu').style.display = "auto";
+      }*/
+    </script>
+
     <canvas width="1280" height="720" id="game-canvas"></canvas>
+
+    <div id="menu" class="container">
+      <div class="menu">
+        <div class="menu-title">
+          <div class="row">
+          </div>
+          <div class="row">
+          </div>
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-primary" onclick="startGame()" type="button" name="run-game">Start Game</button>
+            </div>
+            <div class="col">
+              <button class="btn btn-primary" type="button" name="button">Button 2</button>
+            </div>
+          </div>
+          <div class="col">
+            <button onlick="togglePlay()" class="btn btn-secondary" type="button" name="button"><i class="fas fa-volume-up"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div id="speakEasyPassword">
       <input id="password" class="bg-dark" type="text" placeholder="Parola d'ordine"></input>

@@ -25,7 +25,6 @@ var all_borders;
 var isJumpPossible;
 var maxJumpTime = 250; //in milliseconds
 var startingY;
-var audio = new Audio('assets/charleston.mp3');
 
 //Levels variables
 var currentLevel = 0;
@@ -88,7 +87,6 @@ var wall = [crisiJournal, wallaceJournal1, wallaceJournal2, alCaponeJournal, pro
 window.onload = function () {
   document.getElementsByTagName("h2")[0].innerText = subtitles[currentLevel];
   //Assign canvas and ctx variables
-  audio.volume = 0.2;
   canvas = document.getElementById("game-canvas");
   ctx = canvas.getContext("2d");
   ctx.fillStyle = "black";
@@ -210,7 +208,6 @@ function draw() {
 function setupInputs() {
   //Listener for when a key is pressed
   document.addEventListener("keydown", function(event){
-    audio.play();
     if ((event.key === "w" || event.key === "ArrowUp") && isJumpPossible) {
         upKey = true;
     } else if (event.key === "a" || event.key === "ArrowLeft") {
