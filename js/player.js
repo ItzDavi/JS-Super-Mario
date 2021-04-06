@@ -15,6 +15,8 @@ function Player(x, y, borders) {
     this.width = 50;
     this.height = 100;
 
+    this.health = 3;
+
     this.step = function() {
       //Movement
       if (this.active) {
@@ -78,7 +80,7 @@ function Player(x, y, borders) {
           this.yspeed = Math.ceil(this.yspeed);
         }
 
-        //Horizontal colliusion rectangle
+        //Horizontal collision rectangle
         let horizontalRect = {
           x: this.x + this.xspeed,
           y: this.y,
@@ -118,8 +120,7 @@ function Player(x, y, borders) {
             this.y = verticalRect.y;
             this.yspeed = 0;
           }
-
-          }
+        }
 
         this.x += this.xspeed;
         this.y += this.yspeed;
@@ -143,6 +144,25 @@ function Player(x, y, borders) {
       let marioSkin = new Image();
       marioSkin.src = "assets/leftstill.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
+    }
+
+    if (this.health === 3) {
+      let marioHearts = new Image();
+      marioHearts.src = "assets/health.png";
+      ctx.drawImage(marioHearts, 30, 30, 25, 25);
+      ctx.drawImage(marioHearts, 60, 30, 25, 25);
+      ctx.drawImage(marioHearts, 90, 30, 25, 25);
+    } else if (this.health === 2) {
+      let marioHearts = new Image();
+      marioHearts.src = "assets/health.png";
+      ctx.drawImage(marioHearts, 30, 30, 25, 25);
+      ctx.drawImage(marioHearts, 60, 30, 25, 25);
+    } else if (this.health === 1) {
+      let marioHearts = new Image();
+      marioHearts.src = "assets/health.png";
+      ctx.drawImage(marioHearts, 30, 30, 25, 25);
+    } else if (this.health === 0) {
+
     }
   }
 }
