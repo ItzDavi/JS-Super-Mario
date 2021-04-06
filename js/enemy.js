@@ -12,12 +12,21 @@ function Enemy(x, y, borders) {
   this.active = true;
   this.facing = 0;
   this.previousFacing = 0;
-  this.width = 50;
+  this.width = 100;
   this.height = 100;
 
   this.damage = 1;
 
   this.step = function() {
+
+    //Check for intersections
+    for (let i = 0; i < all_borders.allBorders.length; i++) {
+      let borderRect = {
+        x: all_borders.getBorder(i).x,
+        y: all_borders.getBorder(i).y,
+        width: all_borders.getBorder(i).width,
+        height: all_borders.getBorder(i).height
+      }
 
     //Horizontal collision rectangle
     let horizontalRect = {
@@ -60,6 +69,14 @@ function Enemy(x, y, borders) {
         this.yspeed = 0;
       }
     }
+  }
 
+  this.draw = function() {
+    if (this.facing === 0) {
+      let enemySkin = new Image();
+      enemySkin. src = "assets/enemy.png";
+      ctx.drawImage(enemySkin, 250, 520, this.width, this.height);
+      }
+    }
   }
 }
