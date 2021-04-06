@@ -102,6 +102,7 @@ window.onload = function () {
 
   //Create Player
   player = new Player(300,400, all_borders);
+  enemy = new Enemy(200, 200, all_borders);
 
   //Game loop
   gameLoop = setInterval(step, 1000/60);
@@ -110,8 +111,11 @@ window.onload = function () {
 function step() {
   //Player step
   player.step();
+  enemy.step();
 
-  checkBordersCollisions(player);
+  checkBordersCollisionsP(player);
+  checkBordersCollisionsE(enemy);
+  checkPlayerEnemyCollisions(player, enemy)
 
   //Draw everything
   draw();
@@ -177,6 +181,7 @@ function draw() {
 
   //Draw Player
   player.draw();
+  enemy.draw();
 
   //Draw borders
   all_borders.allBorders.forEach(border => border.draw());
@@ -198,11 +203,6 @@ function draw() {
     ctx.drawImage(wall[currentLevel], 10, 10, 850, 450);
     ctx.drawImage(imagesPresentation[currentLevel], ((canvas.width / 5)+550), 35, 400, 450);
   }
-
-  /*var t = 100;
-  setInterval(function(){
-    drawHealtBar(100, 25, t, 100, 10);
-  }, 9000);*/
 }
 
 function setupInputs() {
@@ -269,7 +269,7 @@ function checkIntersection (r1, r2) {
 }
 
 //Check for borders and players collisions
- function checkBordersCollisions(player) {
+ function checkBordersCollisionsP(player) {
    if (player.x < 0) {
      player.xspeed = 0;
      player.x = 0;
@@ -281,6 +281,36 @@ function checkIntersection (r1, r2) {
      player.y = 0;
    }
  }
+
+ //Check for borders and enemy collisions
+  function checkBordersCollisionsE(enemy) {
+    if (enemy.x < 0) {
+      enemy.xspeed = 0;
+      enemy.x = 0;
+    } else if (enemy.x >= 1280 - enemy.width) {
+      enemy.xspeed = 0;
+      enemy.x = 1280 - enemy.width;
+    } else if (enemy.y < 0) {
+      enemy.yspeed = 0;
+      enemy.y = 0;
+    }
+  }
+
+  //Check for enemy and player collision and so, everyone loose 1 health
+  function checkPlayerEnemyCollisions(player, enemy) {
+    //Enemy right corner
+    if (enemy.x + enemy.width == player.x) {
+      enemy.xspeed = 0;
+      player.xspeed = 0;
+
+      player.x = player.x + 30;
+
+      enemy.yspeed = 0;
+      player.yspeed = 0;
+
+      player.health -= enemy.damage;
+    }
+  }
 
 //Check the player position to let him jump
 function checkPos(player) {
@@ -335,20 +365,3 @@ function checkSpeakEasyPassword () {
     }
   }
 }
-
-/*function drawHealtBar(x, y, per, width, height) {
-  ctx.beginPath();
-  ctx.rect(x-width/2, y, width*(per/100), height);
-
-  if (per > 63) {
-    ctx.fillStyle = "green";
-  } else if (per > 37) {
-    ctx.fillStyle = "gold";
-  } else if (per > 13) {
-    ctx.fillStyle = "orange";
-  } else {
-    ctx.fillStyle = "red";
-  }
-  ctx.closePath();
-  ctx.fill();
-}*/
