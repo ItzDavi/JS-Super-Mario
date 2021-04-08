@@ -299,12 +299,9 @@ function checkIntersection (r1, r2) {
   //Check for enemy and player collision and so, everyone loose 1 health
   function checkPlayerEnemyCollisions(player, enemy) {
     //Enemy right corner
-    if (enemy.x + enemy.width == player.x) {
+    if (enemy.x + enemy.width === player.x) {
       enemy.xspeed = 0;
       player.xspeed = 0;
-
-      player.x = player.x + 30;
-
       enemy.yspeed = 0;
       player.yspeed = 0;
 
