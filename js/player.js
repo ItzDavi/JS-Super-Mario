@@ -149,18 +149,18 @@ function Player(x, y, borders) {
     if (this.health === 3) {
       let marioHearts = new Image();
       marioHearts.src = "assets/health.png";
-      ctx.drawImage(marioHearts, 30, 30, 25, 25);
-      ctx.drawImage(marioHearts, 60, 30, 25, 25);
-      ctx.drawImage(marioHearts, 90, 30, 25, 25);
+      ctx.drawImage(marioHearts, 30, 30, 50, 50);
+      ctx.drawImage(marioHearts, 80, 30, 50, 50);
+      ctx.drawImage(marioHearts, 130, 30, 50, 50);
     } else if (this.health === 2) {
       let marioHearts = new Image();
       marioHearts.src = "assets/health.png";
-      ctx.drawImage(marioHearts, 30, 30, 25, 25);
-      ctx.drawImage(marioHearts, 60, 30, 25, 25);
+      ctx.drawImage(marioHearts, 30, 30, 50, 50);
+      ctx.drawImage(marioHearts, 80, 30, 50, 50);
     } else if (this.health === 1) {
       let marioHearts = new Image();
       marioHearts.src = "assets/health.png";
-      ctx.drawImage(marioHearts, 30, 30, 25, 25);
+      ctx.drawImage(marioHearts, 30, 30, 50, 50);
     } else if (this.health === 0) {
 
     }
