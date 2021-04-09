@@ -102,10 +102,12 @@ window.onload = function () {
 
   //Create Player
   player = new Player(300,400, all_borders);
-  enemy = new Enemy(200, 200, all_borders);
+  enemy = new Enemy(100, 100, all_borders);
+
+  all_borders.newBorder(enemy.x, enemy.y, 100, 100);
 
   //Game loop
-  gameLoop = setInterval(step, 1000/60);
+  gameLoop = setInterval(step, 1000/30);
 }
 
 function step() {
@@ -299,13 +301,20 @@ function checkIntersection (r1, r2) {
   //Check for enemy and player collision and so, everyone loose 1 health
   function checkPlayerEnemyCollisions(player, enemy) {
     //Enemy right corner
-    if (enemy.x + enemy.width === player.x) {
+    if (enemy.x + enemy.width == player.x) {
       enemy.xspeed = 0;
       player.xspeed = 0;
+
+      player.x = enemy.x + enemy.width;
+
       enemy.yspeed = 0;
       player.yspeed = 0;
 
       player.health -= enemy.damage;
+
+      console.log(enemy.x);
+      console.log(player.x);
+      console.log("hit");
     }
   }
 
