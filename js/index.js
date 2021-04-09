@@ -104,10 +104,10 @@ window.onload = function () {
   player = new Player(300,400, all_borders);
   enemy = new Enemy(100, 100, all_borders);
 
-  all_borders.newBorder(enemy.x, enemy.y, 100, 100);
+  //all_borders.newBorder(enemy.x, enemy.y, 100, 100);
 
   //Game loop
-  gameLoop = setInterval(step, 1000/30);
+  gameLoop = setInterval(step, 1000/60);
 }
 
 function step() {
