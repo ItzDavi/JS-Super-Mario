@@ -66,7 +66,7 @@ function Enemy(x, y, borders) {
     if (this.facing === 0) {
       let enemySkin = new Image();
       enemySkin. src = "assets/enemy.png";
-      ctx.drawImage(enemySkin, this.x, 520, this.width, this.height);
+      ctx.drawImage(enemySkin, this.x, this.y, this.width, this.height);
     }
   }
 }
