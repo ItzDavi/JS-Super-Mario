@@ -302,19 +302,16 @@ function checkIntersection (r1, r2) {
   function checkPlayerEnemyCollisions(player, enemy) {
     //Enemy right corner
     if (enemy.x + enemy.width == player.x) {
-      enemy.xspeed = 0;
       player.xspeed = 0;
-
       player.x = enemy.x + enemy.width;
-
-      enemy.yspeed = 0;
-      player.yspeed = 0;
-
       player.health -= enemy.damage;
+      console.log("right hit");
 
-      console.log(enemy.x);
-      console.log(player.x);
-      console.log("hit");
+    } else if (enemy.x == player.x) {
+      player.xspeed = 0;
+      player.x = enemy.x;
+      player.health -= enemy.damage;
+      console.log("hit left");
     }
   }
 
