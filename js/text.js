@@ -8,13 +8,10 @@ var testLine = "";
 var metrics = "";
 var testWidth = 0;
 
-
-
 var x = ((1280 / 2) - maxWidth);
 var y = 10;
 
 //Paragraphs to write
-// i testi delle frasi da mostrare nei vari "livelli"
 var paragraphs = [
     "",
     "",
@@ -31,7 +28,6 @@ var paragraphs = [
 ];
 
 //Subtitles near the game argument
-// i sottotitoli dei paragrafi
 var subtitles = [
     "La crisi del '29",
     "Wallace",
