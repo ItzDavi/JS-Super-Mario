@@ -13,6 +13,7 @@ var invisibleBorders = new Image();
 var speakEasyPassword = "1929";
 
 //Input variables
+var mobileInput;
 var upKey;
 var rightKey;
 var downkey;
@@ -253,6 +254,8 @@ function setupInputs() {
     }
   });
 
+  //Mobile controls
+  mobileInput = document.getElementsByClassName('className')
 }
 
 //Check for intersections between objects
