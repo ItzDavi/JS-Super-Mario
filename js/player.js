@@ -26,7 +26,7 @@ function Player(x, y, borders) {
           this.previousFacing = this.facing;
           if(this.previousFacing == 1) {
             this.facing = 0;
-          } else if(this.previousFacing == 2){
+          } else if(this.previousFacing == 2) {
             this.facing = 3;
           }
 
