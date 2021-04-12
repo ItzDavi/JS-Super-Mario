@@ -1,20 +1,26 @@
-function Enemy(x, y, borders) {
+function Enemy(x, y, borders, player) {
+  //X and Y position
   this.x = x;
   this.y = y;
 
+  //Game interactions
   this.all_borders = borders;
+  this.player = player;
 
+  //Movement variables
   this.xspeed = 0;
   this.yspeed = 0;
   this.friction = 0.6;
   this.maxspeed = 10;
 
+  //General variables
   this.active = true;
   this.facing = 0;
   this.previousFacing = 0;
   this.width = 100;
   this.height = 100;
 
+  //Damage
   this.damage = 1;
 
   this.step = function() {
@@ -48,6 +54,7 @@ function Enemy(x, y, borders) {
         while (checkIntersection(horizontalRect, borderRect)) {
           horizontalRect.x -= Math.sign(this.xspeed);
         }
+        //Stop moving horizontally
         this.x = horizontalRect.x;
         this.xspeed = 0;
       }
@@ -56,6 +63,7 @@ function Enemy(x, y, borders) {
         while (checkIntersection(verticalRect, borderRect)) {
           verticalRect.y -= Math.sign(this.yspeed);
         }
+        //Stop moving verically
         this.y = verticalRect.y;
         this.yspeed = 0;
       }
@@ -63,6 +71,7 @@ function Enemy(x, y, borders) {
   }
 
   this.draw = function() {
+    //Static image
     if (this.facing === 0) {
       let enemySkin = new Image();
       enemySkin. src = "assets/enemy.png";
