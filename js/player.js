@@ -1,7 +1,8 @@
-function Player(x, y, borders) {
+function Player(x, y, borders, enemy) {
     this.x = x;
     this.y = y;
     this.all_borders = borders;
+    this.enemy = enemy;
     //Velocity
     this.xspeed = 0;
     this.yspeed = 0;
@@ -95,7 +96,7 @@ function Player(x, y, borders) {
           height: this.height
         }
 
-        //Check for intersections
+        //Get all borders
         for (let i = 0; i < all_borders.allBorders.length; i++) {
           let borderRect = {
             x: all_borders.getBorder(i).x,
@@ -104,63 +105,81 @@ function Player(x, y, borders) {
             height: all_borders.getBorder(i).height
           }
 
-          //Objects limits
+          //Check for objects limits collisions
           if (checkIntersection(horizontalRect, borderRect)) {
             while (checkIntersection(horizontalRect, borderRect)) {
               horizontalRect.x -= Math.sign(this.xspeed);
             }
+            //Stop moving horizontal
             this.x = horizontalRect.x;
             this.xspeed = 0;
           }
 
+          //Check for objects limits collisions
           if (checkIntersection(verticalRect, borderRect)) {
             while (checkIntersection(verticalRect, borderRect)) {
               verticalRect.y -= Math.sign(this.yspeed);
             }
+            //Stop moving vertical
             this.y = verticalRect.y;
             this.yspeed = 0;
           }
         }
 
+        //Move mario
         this.x += this.xspeed;
         this.y += this.yspeed;
       }
   }
 
   this.draw = function() {
+    //If mario not moved
     if (this.facing === 0) {
       let marioSkin = new Image();
       marioSkin.src = "assets/rightstill.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
+
+      //If mario looked right
     } else if (this.facing === 1) {
       let marioSkin = new Image();
       marioSkin.src = "assets/rightmov.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
+
+      //If mario looked left
     } else if (this.facing === 2) {
       let marioSkin = new Image();
       marioSkin.src = "assets/leftmov.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
+
+      //If mario stopped
     } else if (this.facing === 3) {
       let marioSkin = new Image();
       marioSkin.src = "assets/leftstill.png";
       ctx.drawImage(marioSkin, this.x, this.y, this.width, this.height);
     }
 
+    //If mario has full health
     if (this.health === 3) {
       let marioHearts = new Image();
       marioHearts.src = "assets/health.png";
       ctx.drawImage(marioHearts, 30, 30, 50, 50);
       ctx.drawImage(marioHearts, 80, 30, 50, 50);
       ctx.drawImage(marioHearts, 130, 30, 50, 50);
+
+      //If mario has 2 hearts of 3
     } else if (this.health === 2) {
       let marioHearts = new Image();
       marioHearts.src = "assets/health.png";
       ctx.drawImage(marioHearts, 30, 30, 50, 50);
       ctx.drawImage(marioHearts, 80, 30, 50, 50);
+
+      //If mario has 1 heart of 3
     } else if (this.health === 1) {
       let marioHearts = new Image();
       marioHearts.src = "assets/health.png";
       ctx.drawImage(marioHearts, 30, 30, 50, 50);
+
+      //If mario has 0 health
     } else if (this.health === 0) {
 
     }
