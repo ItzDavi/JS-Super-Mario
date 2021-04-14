@@ -138,7 +138,6 @@ function Player(x, y, borders, enemy) {
             }
             this.y = verticalRect.y;
             this.yspeed = 0;
-            this.health--;
           }
         }
 
@@ -150,7 +149,6 @@ function Player(x, y, borders, enemy) {
           }
           this.x = horizontalRect.x;
           this.xspeed = 0;
-          this.health--;
         }
       }
 
