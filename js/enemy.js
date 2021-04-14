@@ -1,4 +1,4 @@
-function Enemy(x, y, borders, player) {
+function Enemy(x, y, borders) {
   //X and Y position
   this.x = x;
   this.y = y;
@@ -8,8 +8,6 @@ function Enemy(x, y, borders, player) {
   this.player = player;
 
   //Movement variables
-  this.xspeed = 0;
-  this.yspeed = 0;
   this.friction = 0.6;
   this.maxspeed = 10;
 
@@ -26,21 +24,21 @@ function Enemy(x, y, borders, player) {
   this.step = function() {
 
     //Horizontal collision rectangle
-    let horizontalRect = {
+    let horizontalRectEnemy = {
       x: this.x + this.xspeed,
       y: this.y,
       width: this.width,
       height: this.height
     }
     //Vertical collision rectangle
-    let verticalRect = {
+    let verticalRectEnemy = {
       x: this.x,
       y: this.y + this.yspeed,
       width: this.width,
       height: this.height
     }
 
-    //Check for intersections
+    /*//Check for intersections
     for (let i = 0; i < all_borders.allBorders.length; i++) {
       let borderRect = {
         x: all_borders.getBorder(i).x,
@@ -50,24 +48,24 @@ function Enemy(x, y, borders, player) {
       }
 
       //Objects limits
-      if (checkIntersection(horizontalRect, borderRect)) {
-        while (checkIntersection(horizontalRect, borderRect)) {
-          horizontalRect.x -= Math.sign(this.xspeed);
+      if (checkIntersection(horizontalRectEnemy, borderRect)) {
+        while (checkIntersection(horizontalRectEnemy, borderRect)) {
+          horizontalRectEnemy.x -= Math.sign(this.xspeed);
         }
         //Stop moving horizontally
-        this.x = horizontalRect.x;
+        this.x = horizontalRectEnemy.x;
         this.xspeed = 0;
       }
 
-      if (checkIntersection(verticalRect, borderRect)) {
-        while (checkIntersection(verticalRect, borderRect)) {
-          verticalRect.y -= Math.sign(this.yspeed);
+      if (checkIntersection(verticalRectEnemy, borderRect)) {
+        while (checkIntersection(verticalRectEnemy, borderRect)) {
+          verticalRectEnemy.y -= Math.sign(this.yspeed);
         }
         //Stop moving verically
-        this.y = verticalRect.y;
+        this.y = verticalRectEnemy.y;
         this.yspeed = 0;
       }
-    }
+    }*/
   }
 
   this.draw = function() {
@@ -75,7 +73,7 @@ function Enemy(x, y, borders, player) {
     if (this.facing === 0) {
       let enemySkin = new Image();
       enemySkin. src = "assets/enemy.png";
-      ctx.drawImage(enemySkin, this.x, this.y, this.width, this.height);
+      ctx.drawImage(enemySkin, this.x, 520, this.width, this.height);
     }
   }
 }
