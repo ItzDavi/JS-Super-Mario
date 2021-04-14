@@ -3,12 +3,17 @@ function Player(x, y, borders, enemy) {
     this.y = y;
     this.all_borders = borders;
     this.enemy = enemy;
+    this.verticalRectEnemy = enemy.verticalRectEnemy;
+    this.horizontalRectEnemy = enemy.horizontalRectEnemy;
+
     //Velocity
     this.xspeed = 0;
     this.yspeed = 0;
+
     //Friction to slow down while jumping
     this.friction = 0.6;
     this.maxSpeed = 10;
+
     //Player ready to move
     this.active = true;
     this.facing = 0;
@@ -124,13 +129,35 @@ function Player(x, y, borders, enemy) {
             this.y = verticalRect.y;
             this.yspeed = 0;
           }
+
+          //Check player and enemy collisions vertically
+          if (checkIntersection(verticalRect, this.enemy)) {
+            while (checkIntersection(verticalRect, this.enemy)) {
+              verticalRect.y -= Math.sign(this.yspeed);
+              console.log("hit bro");
+            }
+            this.y = verticalRect.y;
+            this.yspeed = 0;
+            this.health--;
+          }
         }
+
+        //Check player and enemy collisions vertically
+        if (checkIntersection(horizontalRect, this.enemy)) {
+          while (checkIntersection(horizontalRect, this.enemy)) {
+            horizontalRect.x -= Math.sign(this.xspeed);
+            console.log("hit bro");
+          }
+          this.x = horizontalRect.x;
+          this.xspeed = 0;
+          this.health--;
+        }
+      }
 
         //Move mario
         this.x += this.xspeed;
         this.y += this.yspeed;
       }
-  }
 
   this.draw = function() {
     //If mario not moved
