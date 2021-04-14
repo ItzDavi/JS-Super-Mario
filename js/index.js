@@ -102,8 +102,9 @@ window.onload = function () {
   all_borders.newBorder(600, 520, 100, 100, 2);
 
   //Create Player
-  player = new Player(300,400, all_borders);
   enemy = new Enemy(100, 100, all_borders);
+  player = new Player(300,400, all_borders, enemy);
+
 
   //all_borders.newBorder(enemy.x, enemy.y, 100, 100);
 
@@ -118,7 +119,7 @@ function step() {
 
   checkBordersCollisionsP(player);
   checkBordersCollisionsE(enemy);
-  checkPlayerEnemyCollisions(player, enemy)
+  //checkPlayerEnemyCollisions(player, enemy)
 
   //Draw everything
   draw();
@@ -255,7 +256,7 @@ function setupInputs() {
   });
 
   //Mobile controls
-  mobileInput = document.getElementsByClassName('className')
+  mobileInput = document.getElementsByClassName('className');
 }
 
 //Check for intersections between objects
@@ -302,7 +303,7 @@ function checkIntersection (r1, r2) {
   }
 
   //Check for enemy and player collision and so, everyone loose 1 health
-  function checkPlayerEnemyCollisions(player, enemy) {
+  /*function checkPlayerEnemyCollisions(player, enemy) {
     //Enemy right corner
     if (enemy.x + enemy.width == player.x) {
       player.xspeed = 0;
@@ -316,7 +317,7 @@ function checkIntersection (r1, r2) {
       player.health -= enemy.damage;
       console.log("hit left");
     }
-  }
+  }*/
 
 //Check the player position to let him jump
 function checkPos(player) {
