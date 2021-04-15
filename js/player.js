@@ -131,8 +131,8 @@ function Player(x, y, borders, enemy) {
           }
 
           //Check player and enemy collisions vertically
-          if (checkIntersection(verticalRect, this.enemy)) {
-            while (checkIntersection(verticalRect, this.enemy)) {
+          if (checkIntersection(verticalRect, this.verticalRectEnemy)) {
+            while (checkIntersection(verticalRect, this.verticalRectEnemy)) {
               verticalRect.y -= Math.sign(this.yspeed);
               console.log("hit bro");
             }
@@ -142,8 +142,8 @@ function Player(x, y, borders, enemy) {
         }
 
         //Check player and enemy collisions vertically
-        if (checkIntersection(horizontalRect, this.enemy)) {
-          while (checkIntersection(horizontalRect, this.enemy)) {
+        if (checkIntersection(horizontalRect, this.horizontalRectEnemy)) {
+          while (checkIntersection(horizontalRect, this.horizontalRectEnemy)) {
             horizontalRect.x -= Math.sign(this.xspeed);
             console.log("hit bro");
           }
