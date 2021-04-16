@@ -102,7 +102,7 @@ window.onload = function () {
   all_borders.newBorder(600, 520, 100, 100, 2);
 
   //Create Player
-  enemy = new Enemy(100, 100, all_borders);
+  enemy = new Enemy(100, 520, all_borders);
   player = new Player(300,400, all_borders, enemy);
 
 
@@ -114,8 +114,8 @@ window.onload = function () {
 
 function step() {
   //Player step
-  player.step();
   enemy.step();
+  player.step();
 
   checkBordersCollisionsP(player);
   checkBordersCollisionsE(enemy);
@@ -159,8 +159,6 @@ function step() {
     document.getElementById("password").classList.remove("invisible");
     document.getElementById("password").classList.add("visible");
   }
-
-
 }
 
 function draw() {
@@ -183,12 +181,12 @@ function draw() {
   else if(currentLevel > 0 && currentLevel <= 2)
     ctx.drawImage(normalSignPrev, 30, 490, 150, 150);
 
-  //Draw Player
-  player.draw();
-  enemy.draw();
-
   //Draw borders
   all_borders.allBorders.forEach(border => border.draw());
+
+  //Draw Player
+  enemy.draw();
+  player.draw();
 
   //Show text when on signs for better ux
   if(player.x >= 1100 && currentLevel >= 0 && currentLevel + 1 < paragraphs.length) {
@@ -370,5 +368,53 @@ function checkSpeakEasyPassword () {
     } else {
       return false;
     }
+  }
+}
+
+function playerEnemyCollisions (player, enemy) {
+  var playerHorizontalRect = {
+    x: player.x + player.xspeed,
+    y: player.y,
+    width: player.width,
+    height: player.height
+  }
+
+  var playerVerticalRect = {
+    x: player.x,
+    y: player.y + player.yspeed,
+    width: player.width,
+    height: player.height
+  }
+
+  var enemyHorizontalRect = {
+    x: enemy.x + enemy.xspeed,
+    y: enemy.y,
+    width: enemy.width,
+    height: enemy.height
+  }
+
+  var enemyVerticalRect = {
+    x: enemy.x,
+    y: enemy.y + enemy.yspeed,
+    width: enemy.width,
+    height: enemy.height
+  }
+
+  if (checkIntersection(playerHorizontalRect, enemyHorizontalRect)) {
+    while (checkIntersection(playerHorizontalRect, enemyHorizontalRect)) {
+      playerHorizontalRect.x -= Math.sign(player.xspeed);
+    }
+    player.x = playerHorizontalRect.x;
+    player.xspeed = 0;
+    console.log("HITTT");
+  }
+
+  if (checkIntersection(playerVerticalRect, enemyVerticalRect)) {
+    while (checkIntersection(playerVerticalRect, enemyVerticalRect)) {
+      playerVerticalRect.x -= Math.sign(player.yspeed);
+    }
+    player.y = playerVerticalRect.y;
+    player.yspeed = 0;
+    console.log("HITTTAAA");
   }
 }

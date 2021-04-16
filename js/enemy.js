@@ -24,14 +24,14 @@ function Enemy(x, y, borders) {
   this.step = function() {
 
     //Horizontal collision rectangle
-    let horizontalRectEnemy = {
+    var horizontalRectEnemy = {
       x: this.x + this.xspeed,
       y: this.y,
       width: this.width,
       height: this.height
     }
     //Vertical collision rectangle
-    let verticalRectEnemy = {
+    var verticalRectEnemy = {
       x: this.x,
       y: this.y + this.yspeed,
       width: this.width,

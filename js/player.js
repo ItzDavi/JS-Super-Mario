@@ -2,9 +2,9 @@ function Player(x, y, borders, enemy) {
     this.x = x;
     this.y = y;
     this.all_borders = borders;
-    this.enemy = enemy;
-    this.verticalRectEnemy = enemy.verticalRectEnemy;
-    this.horizontalRectEnemy = enemy.horizontalRectEnemy;
+    //this.enemySprite = enemy;
+    //this.verticalRectEnemy = this.enemySprite.verticalRectEnemy;
+    //this.horizontalRectEnemy = this.enemySprite.horizontalRectEnemy;
 
     //Velocity
     this.xspeed = 0;
@@ -130,7 +130,7 @@ function Player(x, y, borders, enemy) {
             this.yspeed = 0;
           }
 
-          //Check player and enemy collisions vertically
+          /*//Check player and enemy collisions vertically
           if (checkIntersection(verticalRect, this.verticalRectEnemy)) {
             while (checkIntersection(verticalRect, this.verticalRectEnemy)) {
               verticalRect.y -= Math.sign(this.yspeed);
@@ -149,13 +149,14 @@ function Player(x, y, borders, enemy) {
           }
           this.x = horizontalRect.x;
           this.xspeed = 0;
-        }
+        }*/
       }
 
         //Move mario
         this.x += this.xspeed;
         this.y += this.yspeed;
       }
+    }
 
   this.draw = function() {
     //If mario not moved
