@@ -380,6 +380,7 @@ function playerEnemyCollisions (player, enemy) {
       player.x -= Math.sign(player.xspeed);
     }
     player.xspeed = 0;
+    player.health -= 1;
   }
 
   if (checkIntersection(player, enemy)) {
