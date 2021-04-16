@@ -119,7 +119,8 @@ function step() {
 
   checkBordersCollisionsP(player);
   checkBordersCollisionsE(enemy);
-  //checkPlayerEnemyCollisions(player, enemy)
+  //checkPlayerEnemyCollisions(player, enemy);
+  playerEnemyCollisions(player, enemy);
 
   //Draw everything
   draw();
@@ -259,6 +260,7 @@ function setupInputs() {
 
 //Check for intersections between objects
 function checkIntersection (r1, r2) {
+  let xORy;
   if (r1.x > r2.x + r2.width) {
     return false;
   } else if (r1.x + r1.width <= r2.x) {
@@ -372,7 +374,22 @@ function checkSpeakEasyPassword () {
 }
 
 function playerEnemyCollisions (player, enemy) {
-  var playerHorizontalRect = {
+
+  if (checkIntersection(player, enemy)) {
+    while (checkIntersection(player, enemy)) {
+      player.x -= Math.sign(player.xspeed);
+    }
+    player.xspeed = 0;
+  }
+
+  if (checkIntersection(player, enemy)) {
+    while (checkIntersection(player, enemy)) {
+      player.y -= Math.sign(player.yspeed);
+    }
+    player.yspeed = 0;
+  }
+
+  /*var playerHorizontalRect = {
     x: player.x + player.xspeed,
     y: player.y,
     width: player.width,
@@ -416,5 +433,5 @@ function playerEnemyCollisions (player, enemy) {
     player.y = playerVerticalRect.y;
     player.yspeed = 0;
     console.log("HITTTAAA");
-  }
+  } */
 }
