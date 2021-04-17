@@ -18,6 +18,7 @@ var upKey;
 var rightKey;
 var downkey;
 var leftKey;
+var whereCollision;
 
 //Game variables
 var gameLoop;
@@ -259,15 +260,18 @@ function setupInputs() {
 }
 
 //Check for intersections between objects
-function checkIntersection (r1, r2) {
-  let xORy;
+function checkIntersection (r1, r2, whereCollision) {
   if (r1.x > r2.x + r2.width) {
+    whereCollision = "x";
     return false;
   } else if (r1.x + r1.width <= r2.x) {
+    whereCollision = "x";
     return false;
   } else if (r1.y >= r2.y + r2.height) {
+    whereCollision = "y";
     return false;
   } else if (r1.y + r1.height <= r2.y) {
+    whereCollision = "y";
     return false;
   } else {
     return true;
@@ -373,23 +377,19 @@ function checkSpeakEasyPassword () {
   }
 }
 
-function playerEnemyCollisions (player, enemy) {
-
-  if (checkIntersection(player, enemy)) {
-    while (checkIntersection(player, enemy)) {
-      player.x -= Math.sign(player.xspeed);
+function playerEnemyCollisions (player, enemy, whereCollision) {
+  if (checkIntersection(player, enemy, whereCollision)) {
+    while (checkIntersection(player, enemy, whereCollision)) {
+      if (whereCollision === "x") {
+        player.x -= Math.sign(player.xspeed);
+      } else if (whereCollision === "y") {
+        player.y -= Math.sign(player.yspeed);
+      }
+      player.xspeed = 0;
+      player.yspeed = 0;
     }
-    player.xspeed = 0;
-    player.health -= 1;
   }
-
-  if (checkIntersection(player, enemy)) {
-    while (checkIntersection(player, enemy)) {
-      player.y -= Math.sign(player.yspeed);
-    }
-    player.yspeed = 0;
-  }
-
+}
   /*var playerHorizontalRect = {
     x: player.x + player.xspeed,
     y: player.y,
@@ -435,4 +435,3 @@ function playerEnemyCollisions (player, enemy) {
     player.yspeed = 0;
     console.log("HITTTAAA");
   } */
-}
