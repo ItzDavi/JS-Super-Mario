@@ -1,7 +1,7 @@
 # Super Mario
 HTML, CSS, Javascript and PHP School project
 
-https://img.shields.io/github/issues/ItzDavi/JS-Super-Mario?style=for-the-badge
+[![GitHub issues](https://img.shields.io/github/issues/ItzDavi/JS-Super-Mario)](https://github.com/ItzDavi/JS-Super-Mario/issues)
 
 * TODO LIST
 1. Add coin
