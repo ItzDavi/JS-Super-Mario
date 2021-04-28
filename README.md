@@ -15,4 +15,4 @@ Currently outdated and will not be update
 NPM Necessary
 
 
-Currently developing it
+Currently under development
