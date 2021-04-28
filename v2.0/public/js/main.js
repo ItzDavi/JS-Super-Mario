@@ -1,5 +1,4 @@
-import SpriteSheet from './spritesheet.js';
-import {loadImage, loadLevel} from './loader.js';
+import {loadLevel} from './loader.js';
 import {loadMarioSprite, loadBackgroundSprites} from './sprites.js';
 
 function drawBackground(background, ctx, sprites) {
