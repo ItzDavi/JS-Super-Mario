@@ -12,4 +12,7 @@ Currently outdated and will not be update
 ### v2.0 folder
 
 
+NPM Necessary
+
+
 Currently developing it
