@@ -1,5 +1,6 @@
 import SpriteSheet from './spritesheet.js';
 import {loadImage, loadLevel} from './loader.js';
+import {loadMarioSprite, loadBackgroundSprites} from './sprites.js';
 
 function drawBackground(background, ctx, sprites) {
   background.ranges.forEach(([x1, x2, y1, y2]) => {
