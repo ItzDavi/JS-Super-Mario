@@ -15,4 +15,7 @@ Currently outdated and will not be update
 NPM Necessary (Dependabot enabled)
 
 
+NPM: Folder v2.0 from cmd:   npm run start
+
+
 Currently under development
