@@ -21,8 +21,10 @@ function drawBackground(background, ctx, sprites) {
     }
   });
 }
-export function createSpriteLayer(entity) {
+export function createSpriteLayer(entities) {
   return function drawSpritesLayer(ctx) {
-    entity.draw(ctx);
-  }
+    entities.forEach(entity {
+          entity.draw(ctx);
+    });
+  };
 }
