@@ -12,10 +12,12 @@ Currently outdated and will not be update
 ### v2.0 folder
 
 
+Currently under development
+
+
+
+
 NPM Necessary (Dependabot enabled)
 
 
 NPM: Folder v2.0 from cmd:   npm run start
-
-
-Currently under development
