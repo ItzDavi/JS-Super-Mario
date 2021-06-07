@@ -250,7 +250,7 @@ function setupInputs() {
             changeLevel(player, "next");
             document.activeElement.blur();
           } else {
-            alert("Per entrare negli SpeakEasy devi inserire la password corretta");
+            alert("Per entrare negli SpeakEasy devi inserire la password corretta!\n\nRicorda che siamo nel 1929!!");
             document.getElementById("password").value = "";
             document.getElementById("password").focus();
             upKey = downkey = leftKey = rightKey = false;
