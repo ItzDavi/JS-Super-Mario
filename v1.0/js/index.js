@@ -27,6 +27,7 @@ var all_borders;
 var isJumpPossible;
 var maxJumpTime = 250; //in milliseconds
 var startingY;
+var music;
 
 //Levels variables
 var currentLevel = 0;
@@ -106,12 +107,17 @@ window.onload = function () {
   enemy = new Enemy(100, 520, all_borders);
   player = new Player(300,400, all_borders, enemy);
 
+  //Music control
+  music = document.getElementById('myAudio');
+  music.src = "assets/charleston.mp3";
+
 
   //all_borders.newBorder(enemy.x, enemy.y, 100, 100);
 
   //Game loop
   gameLoop = setInterval(step, 1000/60);
 }
+
 
 function step() {
   //Player step
@@ -167,7 +173,6 @@ function draw() {
   //Draw canvas background
   canvasBackground.src = "assets/bg1.jpg";
   ctx.drawImage(canvasBackground, 0, 0, 1280, 720);
-
   //Draw signs
   signNext.src = "assets/signwhite.png";
   signPrev.src = "assets/signrevwhite.png";
@@ -226,6 +231,7 @@ function setupInputs() {
   //Listener for when a key is no more pressed
   document.addEventListener("keyup", function(event){
     if (event.key === "w" || event.key === "ArrowUp") {
+      music.play();
       upKey = false;
     } else if (event.key === "a" || event.key === "ArrowLeft") {
       leftKey = false;
