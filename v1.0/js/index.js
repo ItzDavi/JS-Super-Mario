@@ -119,9 +119,9 @@ function step() {
   player.step();
 
   checkBordersCollisionsP(player);
-  checkBordersCollisionsE(enemy);
+  //checkBordersCollisionsE(enemy);
   //checkPlayerEnemyCollisions(player, enemy);
-  playerEnemyCollisions(player, enemy);
+  //playerEnemyCollisions(player, enemy);
 
   //Draw everything
   draw();
@@ -187,7 +187,7 @@ function draw() {
   all_borders.allBorders.forEach(border => border.draw());
 
   //Draw Player
-  enemy.draw();
+  //enemy.draw();
   player.draw();
 
   //Show text when on signs for better ux
@@ -293,7 +293,7 @@ function checkIntersection (r1, r2, whereCollision) {
  }
 
  //Check for borders and enemy collisions
-  function checkBordersCollisionsE(enemy) {
+  /*function checkBordersCollisionsE(enemy) {
     if (enemy.x < 0) {
       enemy.xspeed = 0;
       enemy.x = 0;
@@ -304,7 +304,7 @@ function checkIntersection (r1, r2, whereCollision) {
       enemy.yspeed = 0;
       enemy.y = 0;
     }
-  }
+  }*/
 
   //Check for enemy and player collision and so, everyone loose 1 health
   /*function checkPlayerEnemyCollisions(player, enemy) {
@@ -377,7 +377,7 @@ function checkSpeakEasyPassword () {
   }
 }
 
-function playerEnemyCollisions (player, enemy, whereCollision) {
+/*function playerEnemyCollisions (player, enemy, whereCollision) {
   if (checkIntersection(player, enemy, whereCollision)) {
     while (checkIntersection(player, enemy, whereCollision)) {
       if (whereCollision === "x") {
@@ -389,7 +389,7 @@ function playerEnemyCollisions (player, enemy, whereCollision) {
       player.yspeed = 0;
     }
   }
-}
+}*/
   /*var playerHorizontalRect = {
     x: player.x + player.xspeed,
     y: player.y,
