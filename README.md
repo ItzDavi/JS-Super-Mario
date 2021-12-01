@@ -12,7 +12,7 @@ Currently outdated and will not be update
 ### v2.0 folder
 
 
-Currently under development
+No more under development
 
 
 
