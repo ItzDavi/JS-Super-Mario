@@ -111,9 +111,6 @@ window.onload = function () {
   music = document.getElementById('myAudio');
   music.src = "assets/charleston.mp3";
 
-
-  //all_borders.newBorder(enemy.x, enemy.y, 100, 100);
-
   //Game loop
   gameLoop = setInterval(step, 1000/60);
 }
@@ -125,9 +122,6 @@ function step() {
   player.step();
 
   checkBordersCollisionsP(player);
-  //checkBordersCollisionsE(enemy);
-  //checkPlayerEnemyCollisions(player, enemy);
-  //playerEnemyCollisions(player, enemy);
 
   //Draw everything
   draw();
@@ -298,37 +292,6 @@ function checkIntersection (r1, r2, whereCollision) {
    }
  }
 
- //Check for borders and enemy collisions
-  /*function checkBordersCollisionsE(enemy) {
-    if (enemy.x < 0) {
-      enemy.xspeed = 0;
-      enemy.x = 0;
-    } else if (enemy.x >= 1280 - enemy.width) {
-      enemy.xspeed = 0;
-      enemy.x = 1280 - enemy.width;
-    } else if (enemy.y < 0) {
-      enemy.yspeed = 0;
-      enemy.y = 0;
-    }
-  }*/
-
-  //Check for enemy and player collision and so, everyone loose 1 health
-  /*function checkPlayerEnemyCollisions(player, enemy) {
-    //Enemy right corner
-    if (enemy.x + enemy.width == player.x) {
-      player.xspeed = 0;
-      player.x = enemy.x + enemy.width;
-      player.health -= enemy.damage;
-      console.log("right hit");
-
-    } else if (enemy.x == player.x) {
-      player.xspeed = 0;
-      player.x = enemy.x;
-      player.health -= enemy.damage;
-      console.log("hit left");
-    }
-  }*/
-
 //Check the player position to let him jump
 function checkPos(player) {
   var check = false;
@@ -382,62 +345,3 @@ function checkSpeakEasyPassword () {
     }
   }
 }
-
-/*function playerEnemyCollisions (player, enemy, whereCollision) {
-  if (checkIntersection(player, enemy, whereCollision)) {
-    while (checkIntersection(player, enemy, whereCollision)) {
-      if (whereCollision === "x") {
-        player.x -= Math.sign(player.xspeed);
-      } else if (whereCollision === "y") {
-        player.y -= Math.sign(player.yspeed);
-      }
-      player.xspeed = 0;
-      player.yspeed = 0;
-    }
-  }
-}*/
-  /*var playerHorizontalRect = {
-    x: player.x + player.xspeed,
-    y: player.y,
-    width: player.width,
-    height: player.height
-  }
-
-  var playerVerticalRect = {
-    x: player.x,
-    y: player.y + player.yspeed,
-    width: player.width,
-    height: player.height
-  }
-
-  var enemyHorizontalRect = {
-    x: enemy.x + enemy.xspeed,
-    y: enemy.y,
-    width: enemy.width,
-    height: enemy.height
-  }
-
-  var enemyVerticalRect = {
-    x: enemy.x,
-    y: enemy.y + enemy.yspeed,
-    width: enemy.width,
-    height: enemy.height
-  }
-
-  if (checkIntersection(playerHorizontalRect, enemyHorizontalRect)) {
-    while (checkIntersection(playerHorizontalRect, enemyHorizontalRect)) {
-      playerHorizontalRect.x -= Math.sign(player.xspeed);
-    }
-    player.x = playerHorizontalRect.x;
-    player.xspeed = 0;
-    console.log("HITTT");
-  }
-
-  if (checkIntersection(playerVerticalRect, enemyVerticalRect)) {
-    while (checkIntersection(playerVerticalRect, enemyVerticalRect)) {
-      playerVerticalRect.x -= Math.sign(player.yspeed);
-    }
-    player.y = playerVerticalRect.y;
-    player.yspeed = 0;
-    console.log("HITTTAAA");
-  } */
