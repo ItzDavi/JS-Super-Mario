@@ -5,18 +5,6 @@ HTML, CSS, Javascript and PHP School project
 
 ### v1.0 folder
 
+1929 - History projects based on Super Mario
 
-Currently outdated and will not be update
-
-
-### v2.0 folder
-
-
-~~No more under development~~
-
-
-
-~~NPM Necessary (Dependabot enabled)~~
-
-
-~~NPM: Folder v2.0 from cmd:   npm run start~~
+Will not be updated
