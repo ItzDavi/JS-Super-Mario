@@ -37,35 +37,6 @@ function Enemy(x, y, borders) {
       width: this.width,
       height: this.height
     }
-
-    /*//Check for intersections
-    for (let i = 0; i < all_borders.allBorders.length; i++) {
-      let borderRect = {
-        x: all_borders.getBorder(i).x,
-        y: all_borders.getBorder(i).y,
-        width: all_borders.getBorder(i).width,
-        height: all_borders.getBorder(i).height
-      }
-
-      //Objects limits
-      if (checkIntersection(horizontalRectEnemy, borderRect)) {
-        while (checkIntersection(horizontalRectEnemy, borderRect)) {
-          horizontalRectEnemy.x -= Math.sign(this.xspeed);
-        }
-        //Stop moving horizontally
-        this.x = horizontalRectEnemy.x;
-        this.xspeed = 0;
-      }
-
-      if (checkIntersection(verticalRectEnemy, borderRect)) {
-        while (checkIntersection(verticalRectEnemy, borderRect)) {
-          verticalRectEnemy.y -= Math.sign(this.yspeed);
-        }
-        //Stop moving verically
-        this.y = verticalRectEnemy.y;
-        this.yspeed = 0;
-      }
-    }*/
   }
 
   this.draw = function() {
